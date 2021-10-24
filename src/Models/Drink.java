@@ -6,11 +6,13 @@ public class Drink {
     private String name;
     private int calories;
     private int serving;
+    private int dayId;
 
-    public Drink(String name, int calories, int serving) {
+    public Drink(String name, int calories, int serving, int dayId) {
         this.name = name;
         this.calories = calories;
         this.serving = serving;
+        this.dayId = dayId;
     }
 
     public int getId() {

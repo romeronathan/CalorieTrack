@@ -1,6 +1,6 @@
 package Models;
 
-public class Meal {
+public class Snack {
 
     private int id;
     private String name;
@@ -8,7 +8,7 @@ public class Meal {
     private int portion;
     private int dayId;
 
-    public Meal(String name, int calories, int portion, int dayId) {
+    public Snack(String name, int calories, int portion, int dayId) {
         this.name = name;
         this.calories = calories;
         this.portion = portion;
@@ -48,7 +48,7 @@ public class Meal {
     }
 
 
-    public String mealDescription() {
+    public String snackDescription() {
         return this.name + " has " + this.calories + " for a portion of " + this.portion;
     }
 }
