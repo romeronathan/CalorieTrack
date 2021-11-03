@@ -1,18 +1,19 @@
-import javafx.application.Application;
-import javafx.scene.Scene;
+package panes;
+
+import javafx.geometry.Insets;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 
-import java.io.IOException;
+public class dailyTrackerPane extends BorderPane {
 
-public class Main extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        //Database.getInstance();
-        BorderPane root = new BorderPane();
+    public dailyTrackerPane() {
+        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         MenuBar menu = new MenuBar();
 
@@ -29,15 +30,6 @@ public class Main extends Application {
         exitMenu.getItems().add(exit);
 
         menu.getMenus().addAll(dailyTracker, weeklyProgress, addItems, credits, exitMenu);
-        root.setTop(menu);
-
-        Scene scene = new Scene(root, 1024, 768);
-        stage.setTitle("Calorie Tracker");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
+        this.setTop(menu);
     }
 }
