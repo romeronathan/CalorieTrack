@@ -15,10 +15,10 @@ import scenes.creditsScene;
 import scenes.dailyTrackerScene;
 import scenes.weeklyProgressScene;
 
-public class dailyTrackerPane extends BorderPane {
+public class weeklyProgressPane extends BorderPane {
 
-    public dailyTrackerPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+    public weeklyProgressPane() {
+        this.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Menu Bar
         MenuBar menu = new MenuBar();
@@ -28,11 +28,11 @@ public class dailyTrackerPane extends BorderPane {
         MenuItem dailyTracker = new MenuItem("Daily Tracker");
         dailyTracker.setOnAction(e -> {
             Main.mainStage.setScene(new dailyTrackerScene());
-                });
+        });
         MenuItem weeklyProgress = new MenuItem("Weekly Progress");
         weeklyProgress.setOnAction(e -> {
             Main.mainStage.setScene(new weeklyProgressScene());
-                });
+        });
         trackerMenu.getItems().addAll(dailyTracker, weeklyProgress);
 
         //Add Items Menu
@@ -40,7 +40,7 @@ public class dailyTrackerPane extends BorderPane {
         MenuItem addItems = new MenuItem("Add Items");
         addItems.setOnAction(e -> {
             Main.mainStage.setScene(new addItemsScene());
-                });
+        });
         addMenu.getItems().addAll(addItems);
 
 
@@ -49,7 +49,7 @@ public class dailyTrackerPane extends BorderPane {
         MenuItem credits = new MenuItem("Credits");
         credits.setOnAction(e -> {
             Main.mainStage.setScene(new creditsScene());
-                });
+        });
         MenuItem exit = new MenuItem("Exit Application");
         exit.setOnAction(e-> {
             System.exit(0);
@@ -63,4 +63,5 @@ public class dailyTrackerPane extends BorderPane {
 
 
     }
+
 }
