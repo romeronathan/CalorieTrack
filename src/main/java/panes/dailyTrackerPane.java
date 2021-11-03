@@ -17,19 +17,40 @@ public class dailyTrackerPane extends BorderPane {
 
         MenuBar menu = new MenuBar();
 
-        Menu dailyTracker = new Menu("Daily Tracker");
-        Menu weeklyProgress = new Menu("Weekly Progress");
-        Menu addItems = new Menu("Add New Items");
-        Menu credits = new Menu("Credits");
+        //Tracker Menu
+        Menu trackerMenu = new Menu("Tracker");
+        MenuItem dailyTracker = new MenuItem("Daily Tracker");
+        dailyTracker.setOnAction(e -> {
 
+                });
+        MenuItem weeklyProgress = new MenuItem("Weekly Progress");
+        weeklyProgress.setOnAction(e -> {
+
+                });
+        trackerMenu.getItems().addAll(dailyTracker, weeklyProgress);
+
+        //Add Items Menu
+        Menu addMenu = new Menu("Add");
+        MenuItem addItems = new MenuItem("Add Items");
+        addItems.setOnAction(e -> {
+
+                });
+        addMenu.getItems().addAll(addItems);
+
+
+        //Exit Menu
         Menu exitMenu = new Menu("Exit");
+        MenuItem credits = new MenuItem("Credits");
+        credits.setOnAction(e -> {
+
+                });
         MenuItem exit = new MenuItem("Exit Application");
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        exitMenu.getItems().add(exit);
+        exitMenu.getItems().addAll(credits, exit);
 
-        menu.getMenus().addAll(dailyTracker, weeklyProgress, addItems, credits, exitMenu);
+        menu.getMenus().addAll(trackerMenu, addMenu, exitMenu);
         this.setTop(menu);
     }
 }
