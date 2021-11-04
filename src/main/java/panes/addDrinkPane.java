@@ -12,9 +12,8 @@ import javafx.scene.paint.Color;
 import launch.Main;
 import scenes.*;
 
-public class dailyTrackerPane extends BorderPane {
-
-    public dailyTrackerPane() {
+public class addDrinkPane extends BorderPane {
+    public addDrinkPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Menu Bar

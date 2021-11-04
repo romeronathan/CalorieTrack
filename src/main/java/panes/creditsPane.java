@@ -10,14 +10,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import launch.Main;
-import scenes.addItemsScene;
-import scenes.creditsScene;
-import scenes.dailyTrackerScene;
-import scenes.weeklyProgressScene;
+import scenes.*;
 
 public class creditsPane extends BorderPane {
     public creditsPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GOLD, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Menu Bar
         MenuBar menu = new MenuBar();
@@ -36,11 +33,15 @@ public class creditsPane extends BorderPane {
 
         //Add Items Menu
         Menu addMenu = new Menu("Add");
-        MenuItem addItems = new MenuItem("Add Items");
-        addItems.setOnAction(e -> {
-            Main.mainStage.setScene(new addItemsScene());
+        MenuItem addFood = new MenuItem("Add Food");
+        addFood.setOnAction(e -> {
+            Main.mainStage.setScene(new addFoodScene());
         });
-        addMenu.getItems().addAll(addItems);
+        MenuItem addDrink = new MenuItem("Add Drink");
+        addDrink.setOnAction(e -> {
+            Main.mainStage.setScene(new addDrinkScene());
+        });
+        addMenu.getItems().addAll(addFood, addDrink);
 
 
         //Exit Menu
