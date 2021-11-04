@@ -43,33 +43,33 @@ public class DBTableValues {
 
         //Table Create Statements
         public static final String CREATE_TABLE_DRINK = "CREATE TABLE " + TABLE_DRINK + "("
-                + DRINK_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + DRINK_COLUMN_NAME + " TEXT,"
-                + DRINK_COLUMN_CALORIES + " INTEGER,"
-                + DRINK_COLUMN_PORTION + " INTEGER,"
-                + DRINK_COLUMN_DAYID + " INTEGER"
+                + DRINK_COLUMN_ID + " int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                + DRINK_COLUMN_NAME + " VARCHAR(50),"
+                + DRINK_COLUMN_CALORIES + " VARCHAR(15),"
+                + DRINK_COLUMN_PORTION + " VARCHAR(15),"
+                + DRINK_COLUMN_DAYID + " VARCHAR(15)"
                 + ")";
 
         public static final String CREATE_TABLE_MEAL = "CREATE TABLE " + TABLE_MEAL + "("
-                        + MEAL_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + MEAL_COLUMN_NAME + " TEXT,"
-                        + MEAL_COLUMN_CALORIES + " INTEGER,"
-                        + MEAL_COLUMN_PORTION + " INTEGER,"
-                        + MEAL_COLUMN_DAYID + " INTEGER"
+                        + MEAL_COLUMN_ID + " int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                        + MEAL_COLUMN_NAME + " VARCHAR(50),"
+                        + MEAL_COLUMN_CALORIES + " VARCHAR(15),"
+                        + MEAL_COLUMN_PORTION + " VARCHAR(15),"
+                        + MEAL_COLUMN_DAYID + " VARCHAR(15)"
                         + ")";
 
         public static final String CREATE_TABLE_SNACK = "CREATE TABLE " + TABLE_SNACK + "("
-                        + SNACK_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + SNACK_COLUMN_NAME + " TEXT,"
-                        + SNACK_COLUMN_CALORIES + " INTEGER,"
-                        + SNACK_COLUMN_PORTION + " INTEGER,"
-                        + SNACK_COLUMN_DAYID + " INTEGER"
+                        + SNACK_COLUMN_ID + " int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                        + SNACK_COLUMN_NAME + " VARCHAR(50),"
+                        + SNACK_COLUMN_CALORIES + " VARCHAR(15),"
+                        + SNACK_COLUMN_PORTION + " VARCHAR(15),"
+                        + SNACK_COLUMN_DAYID + " VARCHAR(15)"
                         + ")";
 
         public static final String CREATE_TABLE_DAY = "CREATE TABLE " + TABLE_DAY + "("
-                        + DAY_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + DAY_COLUMN_DATE + " TEXT,"
-                        + DAY_COLUMN_CALORIE_GOAL + " INTEGER"
+                        + DAY_COLUMN_ID + " int NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                        + DAY_COLUMN_DATE + " VARCHAR(50),"
+                        + DAY_COLUMN_CALORIE_GOAL + " VARCHAR(15)"
                         + ")";
 
   
