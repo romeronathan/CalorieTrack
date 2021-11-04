@@ -1,13 +1,9 @@
 package panes;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import launch.Main;
 import scenes.*;
@@ -60,6 +56,39 @@ public class addFoodPane extends BorderPane {
         this.setTop(menu);
 
         //Content
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(5);
+        grid.setHgap(5);
+
+        final TextField foodName = new TextField();
+        foodName.setPromptText("Name");
+        foodName.setPrefColumnCount(10);
+        foodName.getText();
+        GridPane.setConstraints(foodName, 0, 0);
+        grid.getChildren().add(foodName);
+
+        final TextField foodCalories = new TextField();
+        foodCalories.setPromptText("Calories");
+        GridPane.setConstraints(foodCalories, 0, 1);
+        grid.getChildren().add(foodCalories);
+
+        final TextField foodPortion = new TextField();
+        foodPortion.setPrefColumnCount(15);
+        foodPortion.setPromptText("Portion");
+        GridPane.setConstraints(foodPortion, 0, 2);
+        grid.getChildren().add(foodPortion);
+
+        Button submitFood = new Button("Submit");
+        GridPane.setConstraints(submitFood, 1, 0);
+        grid.getChildren().add(submitFood);
+
+        Button clear = new Button("Clear");
+        GridPane.setConstraints(clear, 1, 1);
+        grid.getChildren().add(clear);
+
+        this.setCenter(grid);
 
 
     }
