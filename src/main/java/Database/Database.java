@@ -16,7 +16,7 @@ public class Database {
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" + Const.DB_NAME + "?userSSL=false",
                         Const.DB_USER, Const.DB_PASS);
-                System.out.println("Database sucessfully created!");
+                System.out.println("Database successfully created!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

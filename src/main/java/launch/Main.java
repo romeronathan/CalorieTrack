@@ -25,6 +25,7 @@ public class Main extends Application {
         mainStage.setTitle("Calorie Tracker");
         mainStage.setScene(new dailyTrackerScene());
         mainStage.show();
+
     }
 
 }
