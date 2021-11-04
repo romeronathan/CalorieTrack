@@ -1,11 +1,11 @@
 package scenes;
 
-import Database.Const;
+import Database.DBConst;
 import javafx.scene.Scene;
 import panes.weeklyProgressPane;
 
 public class weeklyProgressScene extends Scene {
     public weeklyProgressScene() {
-        super(new weeklyProgressPane(), Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+        super(new weeklyProgressPane(), DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
     }
 }

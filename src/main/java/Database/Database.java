@@ -2,7 +2,6 @@ package Database;
 
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -14,8 +13,8 @@ public class Database {
         if(connection == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" + Const.DB_NAME + "?userSSL=false",
-                        Const.DB_USER, Const.DB_PASS);
+                connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" + DBConst.DB_NAME + "?userSSL=false",
+                        DBConst.DB_USER, DBConst.DB_PASS);
                 System.out.println("Database successfully created!");
             } catch (Exception e) {
                 e.printStackTrace();

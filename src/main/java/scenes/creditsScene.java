@@ -1,11 +1,11 @@
 package scenes;
 
-import Database.Const;
+import Database.DBConst;
 import javafx.scene.Scene;
 import panes.creditsPane;
 
 public class creditsScene extends Scene {
     public creditsScene() {
-        super(new creditsPane(), Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+        super(new creditsPane(), DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
     }
 }
