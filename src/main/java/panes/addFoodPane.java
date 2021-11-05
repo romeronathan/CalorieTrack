@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
 
@@ -80,13 +81,22 @@ public class addFoodPane extends BorderPane {
         GridPane.setConstraints(foodPortion, 0, 2);
         grid.getChildren().add(foodPortion);
 
+        Text missingInfo = new Text();
+        missingInfo.setFill(Color.RED);
+
         Button submitFood = new Button("Submit");
+        submitFood.setOnAction(e -> {
+            if(foodName.getText().isEmpty() || foodCalories.getText().isEmpty() || foodPortion.getText().isEmpty()) {
+                missingInfo.setText("Missing Information");
+            }
+                });
         GridPane.setConstraints(submitFood, 1, 0);
         grid.getChildren().add(submitFood);
 
         Button clear = new Button("Clear");
         GridPane.setConstraints(clear, 1, 1);
         grid.getChildren().add(clear);
+        grid.setAlignment(Pos.CENTER);
 
         this.setCenter(grid);
 
