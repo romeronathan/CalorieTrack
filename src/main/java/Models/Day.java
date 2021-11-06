@@ -1,12 +1,30 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Day {
     private int id;
     private Date date;
     private int calorieGoal;
+    private ArrayList<NutritionItem> nutritionItems;
+    private int currentCalories;
 
+    public ArrayList<NutritionItem> getNutritionItems() {
+        return nutritionItems;
+    }
+
+    public void setNutritionItems(ArrayList<NutritionItem> nutritionItems) {
+        this.nutritionItems = nutritionItems;
+    }
+
+    public int getCurrentCalories() {
+        return currentCalories;
+    }
+
+    public void setCurrentCalories(int currentCalories) {
+        this.currentCalories = currentCalories;
+    }
 
     public Day(Date date, int calorieGoal) {
         this.date = date;
