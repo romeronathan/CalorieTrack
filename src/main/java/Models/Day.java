@@ -7,8 +7,9 @@ public class Day {
     private int id;
     private Date date;
     private int calorieGoal;
-    private ArrayList<NutritionItem> nutritionItems;
     private int currentCalories;
+    private ArrayList<NutritionItem> nutritionItems;
+
 
     public ArrayList<NutritionItem> getNutritionItems() {
         return nutritionItems;
@@ -27,6 +28,11 @@ public class Day {
     }
 
     public Day(Date date, int calorieGoal) {
+        this.date = date;
+        this.calorieGoal = calorieGoal;
+    }
+    public Day(int dayId, Date date, int calorieGoal) {
+        this.id = dayId;
         this.date = date;
         this.calorieGoal = calorieGoal;
     }

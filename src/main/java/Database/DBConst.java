@@ -1,4 +1,4 @@
-package Database;
+package database;
 
 public class DBConst {
     public static final String DB_NAME = "caloriedb";
