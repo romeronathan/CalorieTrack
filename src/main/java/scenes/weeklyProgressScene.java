@@ -1,6 +1,6 @@
 package scenes;
 
-import Database.DBConst;
+import database.DBConst;
 import javafx.scene.Scene;
 import panes.weeklyProgressPane;
 
