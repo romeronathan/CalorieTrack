@@ -17,7 +17,11 @@ public class DayTable implements DayDAO {
     Database db = Database.getInstance();
 
     ArrayList<Day> days = new ArrayList<>();
-
+    /**
+     * @param
+     * @return days
+     *
+     */
     @Override
     public ArrayList<Day> getAllDays() {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY;
@@ -34,11 +38,16 @@ public class DayTable implements DayDAO {
                 );
             }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
         return days;
     }
+    /**
+     * @param id
+     * @return coin
+     *
+     */
     @Override
     public Day getDay(int id) {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY +
@@ -57,6 +66,11 @@ public class DayTable implements DayDAO {
         }
         return null;
     }
+    /**
+     * @param day
+     * @return
+     *
+     */
     @Override
     public void createDay(Day day) {
         String query = "INSERT INTO " + DBTableValues.TABLE_DAY +
