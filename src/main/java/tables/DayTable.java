@@ -1,6 +1,7 @@
 package tables;
 
 import Models.NutritionItem;
+import daos.DayDAO;
 import database.DBTableValues;
 import Models.Day;
 import database.Database;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DayTable implements DAOS.DayDAO {
+public class DayTable implements DayDAO {
 
     Database db = Database.getInstance();
 

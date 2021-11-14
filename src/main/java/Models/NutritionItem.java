@@ -14,6 +14,10 @@ public class NutritionItem {
         this.dayId = dayId;
     }
 
+    public NutritionItem() {
+
+    }
+
 
     public String getName() {
         return name;
