@@ -13,6 +13,11 @@ import launch.Main;
 import scenes.*;
 
 public class addDrinkPane extends BorderPane {
+
+    String drinkName;
+    int drinkCalories;
+    int drinkServing;
+
     public addDrinkPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -41,7 +46,11 @@ public class addDrinkPane extends BorderPane {
         addDrink.setOnAction(e -> {
             Main.mainStage.setScene(new addDrinkScene());
         });
-        addMenu.getItems().addAll(addFood, addDrink);
+        MenuItem addGoal = new MenuItem("Add Daily Goal");
+        addGoal.setOnAction(e -> {
+            Main.mainStage.setScene(new dailyGoalScene());
+        });
+        addMenu.getItems().addAll(addFood, addDrink, addGoal);
 
 
         //Exit Menu
@@ -66,33 +75,45 @@ public class addDrinkPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
-        final TextField drinkName = new TextField();
-        drinkName.setPromptText("Name");
-        drinkName.setPrefColumnCount(10);
-        drinkName.getText();
-        GridPane.setConstraints(drinkName, 0, 0);
-        grid.getChildren().add(drinkName);
+        final TextField drinkNameTF = new TextField();
+        drinkNameTF.setPromptText("Name");
+        drinkNameTF.setPrefColumnCount(10);
+        drinkNameTF.getText();
+        GridPane.setConstraints(drinkNameTF, 0, 0);
+        grid.getChildren().add(drinkNameTF);
 
-        final TextField drinkCalories = new TextField();
-        drinkCalories.setPromptText("Calories");
-        GridPane.setConstraints(drinkCalories, 0, 1);
-        grid.getChildren().add(drinkCalories);
+        final TextField drinkCaloriesTF = new TextField();
+        drinkCaloriesTF.setPromptText("Calories");
+        GridPane.setConstraints(drinkCaloriesTF, 0, 1);
+        grid.getChildren().add(drinkCaloriesTF);
 
-        final TextField drinkServing = new TextField();
-        drinkServing.setPrefColumnCount(15);
-        drinkServing.setPromptText("Serving");
-        GridPane.setConstraints(drinkServing, 0, 2);
-        grid.getChildren().add(drinkServing);
+        final TextField drinkServingTF = new TextField();
+        drinkServingTF.setPrefColumnCount(15);
+        drinkServingTF.setPromptText("Serving");
+        GridPane.setConstraints(drinkServingTF, 0, 2);
+        grid.getChildren().add(drinkServingTF);
 
-        Text missingInfo = new Text();
-        missingInfo.setFill(Color.RED);
 
         Button submitDrink = new Button("Submit");
         submitDrink.setOnAction(e -> {
-            if(drinkName.getText().isEmpty() || drinkCalories.getText().isEmpty() || drinkServing.getText().isEmpty()) {
-                missingInfo.setText("Missing Information");
+            if(drinkNameTF.getText().isEmpty() || drinkCaloriesTF.getText().isEmpty() || drinkServingTF.getText().isEmpty()) {
+                if(drinkNameTF.getText().isEmpty()) {
+                    drinkNameTF.setPromptText("Please Enter a Name");
+                }
+                if(drinkCaloriesTF.getText().isEmpty()) {
+                    drinkCaloriesTF.setPromptText("Please Enter Calories");
+                }
+                if(drinkServingTF.getText().isEmpty()) {
+                    drinkServingTF.setPromptText("Please Enter Serving");
+                }
             } else {
-
+                drinkName = drinkNameTF.getText();
+                drinkCalories = Integer.parseInt(drinkCaloriesTF.getText());
+                drinkServing = Integer.parseInt(drinkServingTF.getText());
+                //TODO Save drinkName, drinkCalories, drinkServing to database
+                drinkNameTF.clear();
+                drinkCaloriesTF.clear();
+                drinkServingTF.clear();
             }
 
         });
@@ -101,6 +122,11 @@ public class addDrinkPane extends BorderPane {
 
 
         Button clear = new Button("Clear");
+        clear.setOnAction(e -> {
+            drinkNameTF.clear();
+            drinkCaloriesTF.clear();
+            drinkServingTF.clear();
+        });
         GridPane.setConstraints(clear, 1, 1);
         grid.getChildren().add(clear);
         grid.setAlignment(Pos.CENTER);

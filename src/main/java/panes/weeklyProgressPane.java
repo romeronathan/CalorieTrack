@@ -42,7 +42,11 @@ public class weeklyProgressPane extends BorderPane {
         addDrink.setOnAction(e -> {
             Main.mainStage.setScene(new addDrinkScene());
         });
-        addMenu.getItems().addAll(addFood, addDrink);
+        MenuItem addGoal = new MenuItem("Add Daily Goal");
+        addGoal.setOnAction(e -> {
+            Main.mainStage.setScene(new dailyGoalScene());
+        });
+        addMenu.getItems().addAll(addFood, addDrink, addGoal);
 
 
         //Exit Menu

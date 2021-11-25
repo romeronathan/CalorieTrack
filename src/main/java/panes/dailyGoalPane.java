@@ -1,22 +1,20 @@
 package panes;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
 
-public class dailyTrackerPane extends BorderPane {
+public class dailyGoalPane extends BorderPane {
 
-    String itemName;
-    int currentProgress = 1250;
-    int dailyGoal = 1250;
-    int progressPercentage = (1 / dailyGoal) * currentProgress;
+    int dailyGoalInt; //TODO: Will equal to daily goal set in database
+    Text currentDailyGoal = new Text();
 
-    public dailyTrackerPane() {
+    public dailyGoalPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Menu Bar
@@ -68,39 +66,41 @@ public class dailyTrackerPane extends BorderPane {
 
         //Content
 
-        GridPane content = new GridPane();
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setHgap(5);
 
-        GridPane addItem = new GridPane();
-        addItem.setPadding(new Insets(10, 10, 10, 10));
-        addItem.setHgap(10);
+        final TextField dailyGoal = new TextField();
+        dailyGoal.setPromptText("Daily Calorie Goal");
+        dailyGoal.setPrefColumnCount(10);
+        dailyGoal.getText();
+        GridPane.setConstraints(dailyGoal, 0, 0);
+        grid.getChildren().add(dailyGoal);
 
-        TextField itemNameTF = new TextField();
-        itemNameTF.setPromptText("Food/Drink Name");
-        addItem.add(itemNameTF, 1, 0);
-
-        Button addItemButton = new Button("Add Item");
-        addItemButton.setOnAction(e -> {
-            itemName = itemNameTF.getText();
+        Button submitDailyGoal = new Button("Submit");
+        submitDailyGoal.setOnAction(e -> {
+            if(dailyGoal.getText().isEmpty()) {
+                dailyGoal.setPromptText("Please enter a daily calorie goal");
+            } else {
+                dailyGoalInt = Integer.parseInt(dailyGoal.getText());
+                currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
+                dailyGoal.clear();
+                //TODO: Save daily goal to database
+            }
         });
-        addItem.add(addItemButton, 2, 0);
+        GridPane.setConstraints(submitDailyGoal, 1, 0);
+        grid.getChildren().add(submitDailyGoal);
 
-        Button clearItemButton = new Button("Clear Item");
-        clearItemButton.setOnAction(e -> {
-            itemNameTF.clear();
-        });
-        addItem.add(clearItemButton, 3, 0);
+        Button clear = new Button("Clear");
+        GridPane.setConstraints(clear, 2, 0);
+        grid.getChildren().add(clear);
+        grid.setAlignment(Pos.CENTER);
 
-        content.add(addItem, 0, 0);
+        currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
+        GridPane.setConstraints(currentDailyGoal, 0, 1);
+        grid.getChildren().add(currentDailyGoal);
 
-        Text dailyGoalTracker = new Text("Daily Goal Tracker: " + dailyGoal + "\t");
-        content.add(dailyGoalTracker, 1, 0);
+        this.setCenter(grid);
 
-        ProgressBar progressBar = new ProgressBar();
-        progressBar.setProgress(0.1);
-        progressBar.setPrefWidth(200);
-        progressBar.setPrefHeight(20);
-        content.add(progressBar, 2, 0);
-
-        this.setCenter(content);
     }
 }
