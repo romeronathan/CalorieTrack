@@ -12,9 +12,9 @@ import scenes.*;
 public class dailyTrackerPane extends BorderPane {
 
     String itemName;
-    int currentProgress = 1250;
-    int dailyGoal = 1250;
-    int progressPercentage = (1 / dailyGoal) * currentProgress;
+    double currentProgress = 1250;
+    double dailyGoal = 1250;
+    double progressPercentage = (1 / dailyGoal) * currentProgress;
 
     public dailyTrackerPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -96,7 +96,7 @@ public class dailyTrackerPane extends BorderPane {
         content.add(dailyGoalTracker, 1, 0);
 
         ProgressBar progressBar = new ProgressBar();
-        progressBar.setProgress(0.1);
+        progressBar.setProgress(progressPercentage);
         progressBar.setPrefWidth(200);
         progressBar.setPrefHeight(20);
         content.add(progressBar, 2, 0);

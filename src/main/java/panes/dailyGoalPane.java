@@ -11,7 +11,7 @@ import scenes.*;
 
 public class dailyGoalPane extends BorderPane {
 
-    int dailyGoalInt; //TODO: Will equal to daily goal set in database
+    double dailyGoalInt; //TODO: Will equal to daily goal set in database
     Text currentDailyGoal = new Text();
 
     public dailyGoalPane() {
