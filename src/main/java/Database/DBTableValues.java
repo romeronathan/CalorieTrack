@@ -8,7 +8,7 @@ public class DBTableValues {
         //Nutrition name TABLE
         public static final String TABLE_SNACK = "snack";
         public static final String TABLE_MEAL = "meal";
-        public static final String TABLE_DRINK = "coin";
+        public static final String TABLE_DRINK = "drink";
         public static final String NUTRITION_COLUMN_ID = "id";
         public static final String NUTRITION_COLUMN_NAME = "name";
         public static final String NUTRITION_COLUMN_CALORIES = "calories";

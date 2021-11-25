@@ -45,7 +45,7 @@ public class DayTable implements DayDAO {
     }
     /**
      * @param id
-     * @return coin
+     * @return day
      *
      */
     @Override
@@ -53,13 +53,13 @@ public class DayTable implements DayDAO {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY +
                 " WHERE " + DBTableValues.DAY_COLUMN_ID + " = " + id;
         try {
-            Statement getCoin = db.getConnection().createStatement();
-            ResultSet data = getCoin.executeQuery(query);
+            Statement getDay = db.getConnection().createStatement();
+            ResultSet data = getDay.executeQuery(query);
             if(data.next()){
-                Day coin =  new Day(data.getInt(DBTableValues.DAY_COLUMN_ID),
+                Day day =  new Day(data.getInt(DBTableValues.DAY_COLUMN_ID),
                         data.getDate(DBTableValues.DAY_COLUMN_DATE),
                         data.getInt(DBTableValues.DAY_COLUMN_CALORIE_GOAL));
-                return coin;
+                return day;
             }
         } catch (SQLException e) {
             e.printStackTrace();
