@@ -1,7 +1,7 @@
 package enums;
 
 enum NutritionEnum {
-    day,
+    snack,
     drink,
     meal
 }
