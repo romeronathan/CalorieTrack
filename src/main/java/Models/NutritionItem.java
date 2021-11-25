@@ -2,6 +2,8 @@ package Models;
 
 public class NutritionItem {
 
+
+    private int id;
     private String name;
     private int calories;
     private int portion;
@@ -50,6 +52,15 @@ public class NutritionItem {
     public void setDayId(int dayId) {
         this.dayId = dayId;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public String itemDescription() {
         return this.name + " has " + this.calories + " for a portion of " + this.portion;

@@ -1,9 +1,7 @@
 package database;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Database {
 
@@ -12,10 +10,15 @@ public class Database {
     private Database() {
         if(connection == null) {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" + DBConst.DB_NAME + "?userSSL=false",
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DBConst.DB_NAME + "?useSSL=false",
                         DBConst.DB_USER, DBConst.DB_PASS);
                 System.out.println("Database successfully created!");
+
+                createTable(DBTableValues.TABLE_DAY, DBTableValues.CREATE_TABLE_DAY, connection);
+                createTable(DBTableValues.TABLE_MEAL, DBTableValues.CREATE_TABLE_MEAL, connection);
+                createTable(DBTableValues.TABLE_DRINK, DBTableValues.CREATE_TABLE_DRINK, connection);
+                createTable(DBTableValues.TABLE_SNACK, DBTableValues.CREATE_TABLE_SNACK, connection);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -36,6 +39,24 @@ public class Database {
         } catch (SQLException e) {
             connection = null;
             e.printStackTrace();
+        }
+    }
+    private void createTable(String tableName, String tableQuery,
+                             Connection connection) throws SQLException {
+        Statement createTable;
+        //Get database information
+        DatabaseMetaData md = connection.getMetaData();
+        //Looking for the table with tableName
+        ResultSet resultSet = md.getTables("nromerodb",
+                null, tableName, null);
+        //If the table is present
+        if(resultSet.next()){
+            System.out.println(tableName + " table already exists!");
+        }
+        else{
+            createTable = connection.createStatement();
+            createTable.execute(tableQuery);
+            System.out.println("The " + tableName + " table has been inserted");
         }
     }
 }

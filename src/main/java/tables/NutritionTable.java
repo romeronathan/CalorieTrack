@@ -77,7 +77,7 @@ public class NutritionTable implements NutritionDAO {
     }
 
    /**
-     * @param itemId
+     * @param id
      * @return item
      * 
      */

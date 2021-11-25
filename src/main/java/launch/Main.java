@@ -1,5 +1,6 @@
 package launch;
 
+import database.Database;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Database db = Database.getInstance();
         mainStage = stage;
         mainStage.setTitle("Calorie Tracker");
         mainStage.setScene(new dailyTrackerScene());
