@@ -14,7 +14,7 @@ public class dailyTrackerPane extends BorderPane {
     String itemName;
     double currentProgress = 1250;
     double dailyGoal = 1250;
-    double progressPercentage = (1 / dailyGoal) * currentProgress;
+    double progressPercentage;
 
     public dailyTrackerPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -96,6 +96,10 @@ public class dailyTrackerPane extends BorderPane {
         content.add(dailyGoalTracker, 1, 0);
 
         ProgressBar progressBar = new ProgressBar();
+        progressPercentage = (1 / dailyGoal) * currentProgress;
+        if(progressPercentage > 1) {
+            progressPercentage = 1;
+        }
         progressBar.setProgress(progressPercentage);
         progressBar.setPrefWidth(200);
         progressBar.setPrefHeight(20);
