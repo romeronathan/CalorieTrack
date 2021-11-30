@@ -89,6 +89,19 @@ public class DayTable implements DayDAO {
     }
     @Override
     public void updateDay(Day day) {
+       
+       String query = "UPDATE " + DBTableValues.TABLE_DAY +
+               " SET " + DBTableValues.DAY_COLUMN_DATE + " = '" +
+               day.getDate() + "', " + DBTableValues.DAY_COLUMN_CALORIE_GOAL +
+                " = '" + day.getCalorieGoal() + "' WHERE " +
+                DBTableValues.DAY_COLUMN_ID + " = " + day.getId();
+
+        try {
+            db.getConnection().createStatement().execute(query);
+            System.out.println("Updated Record");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
     @Override

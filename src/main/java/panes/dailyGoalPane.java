@@ -1,5 +1,6 @@
 package panes;
 
+import Models.Day;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -8,12 +9,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
+import tables.DayTable;
 
 public class dailyGoalPane extends BorderPane {
 
-    double dailyGoalInt; //TODO: Will equal to daily goal set in database
+   //TODO: Will equal to daily goal set in database
     Text currentDailyGoal = new Text();
+    Day day = Main.activeDay;
 
+    int dailyGoalInt = day.getCalorieGoal();
     public dailyGoalPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -84,8 +88,22 @@ public class dailyGoalPane extends BorderPane {
             } else {
                 dailyGoalInt = Integer.parseInt(dailyGoal.getText());
                 currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
+                day.setCalorieGoal(dailyGoalInt);
+
+
                 dailyGoal.clear();
                 //TODO: Save daily goal to database
+
+                try {
+                    new DayTable().updateDay(day);
+                    Main.activeDay = day;
+                    currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
+                } catch (Exception exception) {
+                    System.out.println(exception);
+                }
+
+
+
             }
         });
         GridPane.setConstraints(submitDailyGoal, 1, 0);

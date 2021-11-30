@@ -78,7 +78,7 @@ public class dailyTrackerPane extends BorderPane {
 
         content.add(addItem, 0, 0);
 
-        Text dailyGoalTracker = new Text("Daily Goal Tracker: " + dailyGoal + "\t");
+        Text dailyGoalTracker = new Text("Daily Goal Tracker: " + currentProgress + "\t");
         content.add(dailyGoalTracker, 1, 0);
 
         ProgressBar progressBar = new ProgressBar();

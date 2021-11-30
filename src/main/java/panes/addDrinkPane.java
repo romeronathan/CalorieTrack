@@ -19,7 +19,7 @@ public class addDrinkPane extends BorderPane {
     String drinkName;
     int drinkCalories;
     int drinkServing;
-//    Day day = Main.activeDay;
+    Day day = Main.activeDay;
 
     public addDrinkPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -115,7 +115,7 @@ public class addDrinkPane extends BorderPane {
                 drinkServing = Integer.parseInt(drinkServingTF.getText());
 
                 //TODO Save drinkName, drinkCalories, drinkServing to database
-//                Drink drink = new Drink(drinkName, drinkCalories, drinkServing, day.getId());
+                Drink drink = new Drink(drinkName, drinkCalories, drinkServing, day.getId());
 
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();
