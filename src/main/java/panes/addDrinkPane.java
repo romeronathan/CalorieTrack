@@ -1,5 +1,6 @@
 package panes;
 
+import Models.Day;
 import Models.Drink;
 import Models.NutritionItem;
 import javafx.geometry.Insets;
@@ -11,12 +12,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
+import tables.DayTable;
 
 public class addDrinkPane extends BorderPane {
 
     String drinkName;
     int drinkCalories;
     int drinkServing;
+//    Day day = Main.activeDay;
 
     public addDrinkPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -110,7 +113,10 @@ public class addDrinkPane extends BorderPane {
                 drinkName = drinkNameTF.getText();
                 drinkCalories = Integer.parseInt(drinkCaloriesTF.getText());
                 drinkServing = Integer.parseInt(drinkServingTF.getText());
+
                 //TODO Save drinkName, drinkCalories, drinkServing to database
+//                Drink drink = new Drink(drinkName, drinkCalories, drinkServing, day.getId());
+
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();
                 drinkServingTF.clear();

@@ -1,5 +1,6 @@
 package panes;
 
+import Models.Day;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -12,8 +13,9 @@ import scenes.*;
 public class dailyTrackerPane extends BorderPane {
 
     String itemName;
-    double currentProgress = 1250;
-    double dailyGoal = 1250;
+    Day day = Main.activeDay;
+    double currentProgress = day.getCurrentCalories();
+    double dailyGoal = day.getCalorieGoal();
     double progressPercentage;
 
     public dailyTrackerPane() {
@@ -40,15 +42,11 @@ public class dailyTrackerPane extends BorderPane {
         addFood.setOnAction(e -> {
             Main.mainStage.setScene(new addFoodScene());
         });
-        MenuItem addDrink = new MenuItem("Add Drink");
-        addDrink.setOnAction(e -> {
-            Main.mainStage.setScene(new addDrinkScene());
-        });
         MenuItem addGoal = new MenuItem("Add Daily Goal");
         addGoal.setOnAction(e -> {
             Main.mainStage.setScene(new dailyGoalScene());
         });
-        addMenu.getItems().addAll(addFood, addDrink, addGoal);
+        addMenu.getItems().addAll(addFood, addGoal);
 
 
         //Exit Menu
@@ -74,21 +72,9 @@ public class dailyTrackerPane extends BorderPane {
         addItem.setPadding(new Insets(10, 10, 10, 10));
         addItem.setHgap(10);
 
-        TextField itemNameTF = new TextField();
-        itemNameTF.setPromptText("Food/Drink Name");
-        addItem.add(itemNameTF, 1, 0);
 
-        Button addItemButton = new Button("Add Item");
-        addItemButton.setOnAction(e -> {
-            itemName = itemNameTF.getText();
-        });
-        addItem.add(addItemButton, 2, 0);
 
-        Button clearItemButton = new Button("Clear Item");
-        clearItemButton.setOnAction(e -> {
-            itemNameTF.clear();
-        });
-        addItem.add(clearItemButton, 3, 0);
+
 
         content.add(addItem, 0, 0);
 
