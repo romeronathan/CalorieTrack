@@ -1,7 +1,7 @@
 package tabs;
 
 import javafx.scene.control.Tab;
-import panes.addDrinkPane;
+import panes.addItemPane;
 
 public class addItemTab extends Tab {
 
@@ -10,7 +10,7 @@ public class addItemTab extends Tab {
     public addItemTab() {
         this.setText("Add Item");
         this.setClosable(false);
-        this.setContent(new addDrinkPane());
+        this.setContent(new addItemPane());
     }
 
     public static addItemTab getInstance() {

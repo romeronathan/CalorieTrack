@@ -2,7 +2,6 @@ package scenes;
 
 import database.DBConst;
 import javafx.scene.Scene;
-import panes.addFoodPane;
 
 public class addFoodScene extends Scene {
     public addFoodScene() {

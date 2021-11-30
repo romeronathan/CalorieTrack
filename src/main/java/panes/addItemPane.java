@@ -14,14 +14,14 @@ import launch.Main;
 import scenes.*;
 import tables.DayTable;
 
-public class addDrinkPane extends BorderPane {
+public class addItemPane extends BorderPane {
 
     String drinkName;
     int drinkCalories;
     int drinkServing;
     Day day = Main.activeDay;
 
-    public addDrinkPane() {
+    public addItemPane() {
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content

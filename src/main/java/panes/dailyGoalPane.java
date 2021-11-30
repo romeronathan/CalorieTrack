@@ -20,11 +20,9 @@ public class dailyGoalPane extends BorderPane {
    //TODO: Will equal to daily goal set in database
     Text currentDailyGoal = new Text();
     Day day = Main.activeDay;
-    public TableView tableView;
 
     int dailyGoalInt = day.getCalorieGoal();
     public dailyGoalPane() {
-        NutritionTable nutritionTable = new NutritionTable();
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content
@@ -73,23 +71,7 @@ public class dailyGoalPane extends BorderPane {
         GridPane.setConstraints(currentDailyGoal, 0, 1);
         grid.getChildren().add(currentDailyGoal);
 
-        this.setTop(grid);
-
-        tableView = new TableView();
-
-        TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
-        column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getName()));
-
-        TableColumn<NutritionItem, String> column2 = new TableColumn<>("Calories");
-        column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
-
-        TableColumn<NutritionItem, String> column3 = new TableColumn<>("Portion");
-        column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getPortion() + ""));
-
-
-        tableView.getColumns().addAll(column1, column2, column3);
-//        tableView.getItems().addAll(nutritionTable.);
-
+        this.setCenter(grid);
 
     }
 }
