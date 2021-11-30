@@ -1,9 +1,8 @@
 package tables;
 
-import Models.NutritionItem;
+import Models.*;
 import daos.DayDAO;
 import database.DBTableValues;
-import Models.Day;
 import database.Database;
 
 
@@ -166,7 +165,86 @@ public class DayTable implements DayDAO {
 
     @Override
     public ArrayList<NutritionItem> getDayItems(int dayId) {
-        return null;
+        // Get all meals, drinks and snacks for the day
+        ArrayList<NutritionItem> dayItems = new ArrayList<>();
+        ArrayList<NutritionItem> meals = getDayMeals(dayId);
+        ArrayList<NutritionItem> drinks = getDayDrinks(dayId);
+        ArrayList<NutritionItem> snacks = getDaySnacks(dayId);
+
+        // Add all meals, drinks and snacks to the dayItems array
+        dayItems.addAll(meals);
+        dayItems.addAll(drinks);
+        dayItems.addAll(snacks);
+
+
+        return dayItems;
+    }
+    @Override
+    public ArrayList<NutritionItem> getDayMeals(int dayId) {
+        // Get all meals for the day
+        ArrayList<NutritionItem> meals = new ArrayList<>();
+        String query = "SELECT * FROM " + DBTableValues.TABLE_MEAL +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId;
+        try {
+            Statement getMeals = db.getConnection().createStatement();
+            ResultSet data = getMeals.executeQuery(query);
+            while(data.next()){
+                meals.add(new Meal(
+                        data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+  
+
+        return meals;
+    }
+    @Override
+    public ArrayList<NutritionItem> getDayDrinks(int dayId) {
+        // Get all drinks for the day
+        ArrayList<NutritionItem> drinks = new ArrayList<>();
+        String query = "SELECT * FROM " + DBTableValues.TABLE_DRINK +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId;
+        try {
+            Statement getDrinks = db.getConnection().createStatement();
+            ResultSet data = getDrinks.executeQuery(query);
+            while(data.next()){
+                drinks.add(new Drink(
+                        data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return drinks;
+    }
+    @Override
+    public ArrayList<NutritionItem> getDaySnacks(int dayId) {
+        // Get all snacks for the day
+        ArrayList<NutritionItem> snacks = new ArrayList<>();
+        String query = "SELECT * FROM " + DBTableValues.TABLE_SNACK +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId;
+        try {
+            Statement getSnacks = db.getConnection().createStatement();
+            ResultSet data = getSnacks.executeQuery(query);
+            while(data.next()){
+                snacks.add(new Snack(
+                        data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return snacks;
     }
 
 }

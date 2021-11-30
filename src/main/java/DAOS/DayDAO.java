@@ -13,4 +13,7 @@ public interface DayDAO {
     public ArrayList<Day> getAllDays();
     public Day getDay(int dayID);
     public ArrayList<NutritionItem> getDayItems(int dayId);
+    public ArrayList<NutritionItem> getDayMeals(int dayId);
+    public ArrayList<NutritionItem> getDayDrinks(int dayId);
+    public ArrayList<NutritionItem> getDaySnacks(int dayId);
 }

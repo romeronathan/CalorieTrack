@@ -29,14 +29,14 @@ public class NutritionTable implements NutritionDAO {
     @Override
     public void createItem(String typeOfItem, NutritionItem item) {
         String query = "INSERT INTO " + typeOfItem +
-                "(" + DBTableValues.NUTRITION_COLUMN_ID + ", " +
+                "(" + DBTableValues.NUTRITION_COLUMN_NAME + ", " +
                 DBTableValues.NUTRITION_COLUMN_CALORIES + ", " +
-                DBTableValues.NUTRITION_COLUMN_NAME + ", " +
-                DBTableValues.NUTRITION_COLUMN_PORTION + ", " +") VALUES ('" +
-              item.getCalories() + "','"
-                + item.getName() + "','"
+                DBTableValues.NUTRITION_COLUMN_PORTION + ", " +
+                DBTableValues.NUTRITION_COLUMN_DAYID +") VALUES ('" +
+              item.getName() + "','"
+                + item.getCalories() + "','"
                 + item.getPortion() + "','"
-                + item.getDayId() + "','" +
+                + item.getDayId() +
                 "')";
         try {
             db.getConnection().createStatement().execute(query);

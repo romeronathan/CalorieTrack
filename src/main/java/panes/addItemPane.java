@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
 import tables.DayTable;
+import tables.NutritionTable;
 
 public class addItemPane extends BorderPane {
 
@@ -68,7 +69,9 @@ public class addItemPane extends BorderPane {
                 drinkServing = Integer.parseInt(drinkServingTF.getText());
 
                 //TODO Save drinkName, drinkCalories, drinkServing to database
-                Drink drink = new Drink(drinkName, drinkCalories, drinkServing, day.getId());
+                NutritionItem item = new NutritionItem(drinkName, drinkCalories, drinkServing, day.getId());
+
+                new NutritionTable().createItem("drink",item);
 
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();

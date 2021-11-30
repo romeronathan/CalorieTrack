@@ -2,6 +2,7 @@ package panes;
 
 import Models.Day;
 import Models.NutritionItem;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -11,7 +12,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
+import tables.DayTable;
 import tables.NutritionTable;
+
+import java.util.ArrayList;
 
 public class dailyTrackerPane extends BorderPane {
 
@@ -25,6 +29,7 @@ public class dailyTrackerPane extends BorderPane {
 
     public dailyTrackerPane() {
         NutritionTable nutritionTable = new NutritionTable();
+        ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
         this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content
@@ -64,8 +69,31 @@ public class dailyTrackerPane extends BorderPane {
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
 
 
+
+
+
+
         tableView.getColumns().addAll(column1, column2, column3);
+
+        for(NutritionItem item : items) {
+            tableView.getItems().add(item);
+
+        }
 //        tableView.getItems().addAll(nutritionTable.);
         this.setCenter(tableView);
+        HBox bottom = new HBox();
+
+        Button removeButton = new Button("Remove Item");
+        removeButton.setOnAction(e -> {
+
+        });
+
+        Button updateButton = new Button("Update Item");
+        updateButton.setOnAction(e -> {
+
+        });
+
+        bottom.getChildren().addAll(removeButton, updateButton);
+        this.setBottom(bottom);
     }
 }
