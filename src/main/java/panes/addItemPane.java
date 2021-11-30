@@ -3,6 +3,7 @@ package panes;
 import Models.Day;
 import Models.Drink;
 import Models.NutritionItem;
+import enums.NutritionEnum;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -14,6 +15,7 @@ import launch.Main;
 import scenes.*;
 import tables.DayTable;
 import tables.NutritionTable;
+import tabs.dailyTrackerTab;
 
 public class addItemPane extends BorderPane {
 
@@ -49,7 +51,13 @@ public class addItemPane extends BorderPane {
         drinkServingTF.setPromptText("Serving");
         GridPane.setConstraints(drinkServingTF, 0, 2);
         grid.getChildren().add(drinkServingTF);
+        final ComboBox<String> itemType = new ComboBox<>();
 
+        //TODO use enum values instead of string values
+        itemType.getItems().addAll("meal", "drink", "snack");
+        GridPane.setConstraints(itemType, 1, 0);
+        itemType.setValue("meal");
+        grid.getChildren().add(itemType);
 
         Button submitDrink = new Button("Submit");
         submitDrink.setOnAction(e -> {
@@ -67,11 +75,16 @@ public class addItemPane extends BorderPane {
                 drinkName = drinkNameTF.getText();
                 drinkCalories = Integer.parseInt(drinkCaloriesTF.getText());
                 drinkServing = Integer.parseInt(drinkServingTF.getText());
+                String type = itemType.getValue();
+                System.out.println(type);
 
                 //TODO Save drinkName, drinkCalories, drinkServing to database
                 NutritionItem item = new NutritionItem(drinkName, drinkCalories, drinkServing, day.getId());
 
-                new NutritionTable().createItem("drink",item);
+                new NutritionTable().createItem(type,item);
+
+                dailyTrackerTab tab = dailyTrackerTab.getInstance();
+                tab.refresh();
 
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();
@@ -79,7 +92,7 @@ public class addItemPane extends BorderPane {
             }
 
         });
-        GridPane.setConstraints(submitDrink, 1, 0);
+        GridPane.setConstraints(submitDrink, 1, 1);
         grid.getChildren().add(submitDrink);
 
 
@@ -89,7 +102,7 @@ public class addItemPane extends BorderPane {
             drinkCaloriesTF.clear();
             drinkServingTF.clear();
         });
-        GridPane.setConstraints(clear, 1, 1);
+        GridPane.setConstraints(clear, 1, 2);
         grid.getChildren().add(clear);
         grid.setAlignment(Pos.CENTER);
 

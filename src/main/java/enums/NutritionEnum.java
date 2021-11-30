@@ -1,6 +1,6 @@
 package enums;
 
-enum NutritionEnum {
+public enum NutritionEnum {
     snack,
     drink,
     meal
