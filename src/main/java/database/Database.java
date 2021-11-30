@@ -47,7 +47,7 @@ public class Database {
         //Get database information
         DatabaseMetaData md = connection.getMetaData();
         //Looking for the table with tableName
-        ResultSet resultSet = md.getTables("nromerodb",
+        ResultSet resultSet = md.getTables("nromerojava",
                 null, tableName, null);
         //If the table is present
         if(resultSet.next()){

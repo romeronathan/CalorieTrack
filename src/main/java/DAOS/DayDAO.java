@@ -9,6 +9,7 @@ public interface DayDAO {
     public void createDay(Day day);
     public void updateDay(Day day);
     public void deleteDay(Day day);
+    public Day getRecentDay();
     public ArrayList<Day> getAllDays();
     public Day getDay(int dayID);
     public ArrayList<NutritionItem> getDayItems(int dayId);

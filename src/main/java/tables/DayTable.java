@@ -95,6 +95,25 @@ public class DayTable implements DayDAO {
     }
 
     @Override
+    public Day getRecentDay() {
+        String query = "SELECT TOP 1 * FROM " + DBTableValues.TABLE_DAY +
+                " ORDER BY" + DBTableValues.DAY_COLUMN_DATE;
+        try {
+            Statement getDay = db.getConnection().createStatement();
+            ResultSet data = getDay.executeQuery(query);
+            if(data.next()){
+                Day day =  new Day(data.getInt(DBTableValues.DAY_COLUMN_ID),
+                        data.getDate(DBTableValues.DAY_COLUMN_DATE),
+                        data.getInt(DBTableValues.DAY_COLUMN_CALORIE_GOAL));
+                return day;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public ArrayList<NutritionItem> getDayItems(int dayId) {
         return null;
     }
