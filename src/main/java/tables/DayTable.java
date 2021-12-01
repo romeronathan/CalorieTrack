@@ -10,7 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class DayTable implements DayDAO {
@@ -251,6 +252,25 @@ public class DayTable implements DayDAO {
         }
 
         return snacks;
+    }
+
+    @Override
+    public Day getDayByDate(Date date) {
+        String query = "SELECT * FROM " + DBTableValues.TABLE_DAY +
+                " WHERE " + DBTableValues.DAY_COLUMN_DATE + " = '" + date + "'";
+        try {
+            Statement getDay = db.getConnection().createStatement();
+            ResultSet data = getDay.executeQuery(query);
+            if(data.next()){
+                Day day =  new Day(data.getInt(DBTableValues.DAY_COLUMN_ID),
+                        data.getDate(DBTableValues.DAY_COLUMN_DATE),
+                        data.getInt(DBTableValues.DAY_COLUMN_CALORIE_GOAL));
+                return day;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

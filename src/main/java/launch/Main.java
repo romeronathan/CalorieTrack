@@ -14,14 +14,17 @@ import tables.DayTable;
 import tabs.*;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class Main extends Application {
 
     public static TabPane tabPane;
     public static Stage mainStage;
-    public static Day activeDay = new DayTable().getRecentDay();
-
+    public static Day activeDay;
+    public static Menu activeDayTitle;
+    public static MenuBar menu = new MenuBar();
+    private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public static void main(String[] args) {
         launch();
     }
@@ -29,16 +32,17 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Database db = Database.getInstance();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        BorderPane root = new BorderPane();
 
+        BorderPane root = new BorderPane();
+        if(activeDay == null) {
+            activeDay = new DayTable().getRecentDay();
+        }
         //Menu
-        MenuBar menu = new MenuBar();
 
         Menu exitMenu = new Menu("File");
         MenuItem exit = new MenuItem("Exit Application");
         formatter = new SimpleDateFormat("dd MMMM yyyy");
-        Menu activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
+        activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
 
         exit.setOnAction(e-> {
             System.exit(0);
@@ -76,5 +80,11 @@ public class Main extends Application {
         stage.show();
 
     }
-
+    public static void updateDate(Day day) {
+        formatter = new SimpleDateFormat("dd MMMM yyyy");
+        activeDay = day;
+        activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
+        menu.getMenus().remove(1);
+        menu.getMenus().add(activeDayTitle);
+    }
 }
