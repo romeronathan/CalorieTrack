@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -71,23 +72,26 @@ public class dailyTrackerPane extends BorderPane {
         tableView.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
-        column1.setPrefWidth(340);
+        column1.setPrefWidth(256);
         column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getName()));
 
         TableColumn<NutritionItem, String> column2 = new TableColumn<>("Portion");
-        column2.setPrefWidth(340);
+        column2.setPrefWidth(256);
         column2.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getPortion() + ""));
 
         TableColumn<NutritionItem, String> column3 = new TableColumn<>("Calories");
-        column3.setPrefWidth(340);
+        column3.setPrefWidth(256);
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
 
+        TableColumn column4 = new TableColumn<>("Actions");
+        column4.setPrefWidth(256);
+        column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("button"));
 
 
 
 
 
-        tableView.getColumns().addAll(column1, column2, column3);
+        tableView.getColumns().addAll(column1, column2, column3, column4);
 
 
         tableView.getItems().addAll(items);
@@ -108,4 +112,5 @@ public class dailyTrackerPane extends BorderPane {
 
 
     }
+
 }

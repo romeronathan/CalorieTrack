@@ -190,10 +190,12 @@ public class DayTable implements DayDAO {
             ResultSet data = getMeals.executeQuery(query);
             while(data.next()){
                 meals.add(new Meal(
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_ID),
                         data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
-                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID),
+                        data.getString(DBTableValues.NUTRITION_COLUMN_TYPE)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -213,10 +215,12 @@ public class DayTable implements DayDAO {
             ResultSet data = getDrinks.executeQuery(query);
             while(data.next()){
                 drinks.add(new Drink(
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_ID),
                         data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
-                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID),
+                        data.getString(DBTableValues.NUTRITION_COLUMN_TYPE)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -235,10 +239,12 @@ public class DayTable implements DayDAO {
             ResultSet data = getSnacks.executeQuery(query);
             while(data.next()){
                 snacks.add(new Snack(
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_ID),
                         data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
                         data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
-                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)));
+                        data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID),
+                        data.getString(DBTableValues.NUTRITION_COLUMN_TYPE)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

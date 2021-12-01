@@ -14,6 +14,7 @@ public class DBTableValues {
         public static final String NUTRITION_COLUMN_CALORIES = "calories";
         public static final String NUTRITION_COLUMN_PORTION = "portion";
         public static final String NUTRITION_COLUMN_DAYID = "dayId";
+        public static final String NUTRITION_COLUMN_TYPE = "type";
 
 
         //Day name TABLE
@@ -35,7 +36,8 @@ public class DBTableValues {
                 + NUTRITION_COLUMN_NAME + " VARCHAR(50),"
                 + NUTRITION_COLUMN_CALORIES + " VARCHAR(15),"
                 + NUTRITION_COLUMN_PORTION + " VARCHAR(15),"
-                + NUTRITION_COLUMN_DAYID + " VARCHAR(15)"
+                + NUTRITION_COLUMN_DAYID + " VARCHAR(15),"
+                + NUTRITION_COLUMN_TYPE + " VARCHAR(15)"
                 + ")";
 
         public static final String CREATE_TABLE_MEAL = "CREATE TABLE " + TABLE_MEAL + "("
@@ -43,7 +45,8 @@ public class DBTableValues {
                         + NUTRITION_COLUMN_NAME + " VARCHAR(50),"
                         + NUTRITION_COLUMN_CALORIES + " VARCHAR(15),"
                         + NUTRITION_COLUMN_PORTION + " VARCHAR(15),"
-                        + NUTRITION_COLUMN_DAYID + " VARCHAR(15)"
+                        + NUTRITION_COLUMN_DAYID + " VARCHAR(15),"
+                        + NUTRITION_COLUMN_TYPE + " VARCHAR(15)"
                         + ")";
 
         public static final String CREATE_TABLE_SNACK = "CREATE TABLE " + TABLE_SNACK + "("
@@ -51,7 +54,8 @@ public class DBTableValues {
                         + NUTRITION_COLUMN_NAME + " VARCHAR(50),"
                         + NUTRITION_COLUMN_CALORIES + " VARCHAR(15),"
                         + NUTRITION_COLUMN_PORTION + " VARCHAR(15),"
-                        + NUTRITION_COLUMN_DAYID + " VARCHAR(15)"
+                        + NUTRITION_COLUMN_DAYID + " VARCHAR(15),"
+                        + NUTRITION_COLUMN_TYPE + " VARCHAR(15)"
                         + ")";
 
         public static final String CREATE_TABLE_DAY = "CREATE TABLE " + TABLE_DAY + "("

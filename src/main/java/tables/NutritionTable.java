@@ -32,11 +32,13 @@ public class NutritionTable implements NutritionDAO {
                 "(" + DBTableValues.NUTRITION_COLUMN_NAME + ", " +
                 DBTableValues.NUTRITION_COLUMN_CALORIES + ", " +
                 DBTableValues.NUTRITION_COLUMN_PORTION + ", " +
-                DBTableValues.NUTRITION_COLUMN_DAYID +") VALUES ('" +
+                DBTableValues.NUTRITION_COLUMN_DAYID + ", " +
+                DBTableValues.NUTRITION_COLUMN_TYPE + ") VALUES ('" +
               item.getName() + "','"
                 + item.getCalories() + "','"
                 + item.getPortion() + "','"
-                + item.getDayId() +
+                + item.getDayId() + "','"
+                + item.getType() +
                 "')";
         try {
             db.getConnection().createStatement().execute(query);
@@ -61,10 +63,12 @@ public class NutritionTable implements NutritionDAO {
             while(data.next()) {
                 items.add(
                         new NutritionItem(
+                                data.getInt(DBTableValues.NUTRITION_COLUMN_ID),
                                 data.getString(DBTableValues.NUTRITION_COLUMN_NAME),
                                 data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES),
                                 data.getInt(DBTableValues.NUTRITION_COLUMN_PORTION),
-                                data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID)
+                                data.getInt(DBTableValues.NUTRITION_COLUMN_DAYID),
+                                data.getString(DBTableValues.NUTRITION_COLUMN_TYPE)
                                         )
                 );
 
