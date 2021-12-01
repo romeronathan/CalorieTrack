@@ -79,7 +79,7 @@ public class addItemPane extends BorderPane {
                 System.out.println(type);
 
                 //TODO Save drinkName, drinkCalories, drinkServing to database
-                NutritionItem item = new NutritionItem(drinkName, drinkCalories, drinkServing, day.getId());
+                NutritionItem item = new NutritionItem(drinkName, drinkCalories, drinkServing, day.getId(), type);
 
                 new NutritionTable().createItem(type,item);
 

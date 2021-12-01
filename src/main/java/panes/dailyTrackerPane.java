@@ -42,15 +42,6 @@ public class dailyTrackerPane extends BorderPane {
         GridPane addItem = new GridPane();
         addItem.setPadding(new Insets(10, 10, 10, 10));
         addItem.setHgap(10);
-        Button removeButton = new Button("Remove Item");
-        removeButton.setOnAction(e -> {
-
-        });
-
-        Button updateButton = new Button("Update Item");
-        updateButton.setOnAction(e -> {
-
-        });
 
         Text dailyGoalTracker = new Text("Daily Goal Tracker: " + currentProgress + "/" + dailyGoal + "\t\t");
         addItem.add(dailyGoalTracker, 1, 0);
@@ -64,8 +55,6 @@ public class dailyTrackerPane extends BorderPane {
         progressBar.setPrefWidth(200);
         progressBar.setPrefHeight(20);
         addItem.add(progressBar, 2, 0);
-        addItem.add(removeButton, 3, 0);
-        addItem.add(updateButton, 4, 0);
         this.setTop(addItem);
 
         tableView = new TableView();
@@ -83,15 +72,18 @@ public class dailyTrackerPane extends BorderPane {
         column3.setPrefWidth(256);
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
 
-        TableColumn column4 = new TableColumn<>("Actions");
-        column4.setPrefWidth(256);
-        column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("button"));
+        TableColumn column4 = new TableColumn<>("Delete Records");
+        column4.setPrefWidth(128);
+        column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
+        column4.setStyle("-fx-alignment: CENTER;");
+
+        TableColumn column5 = new TableColumn<>("Update Records");
+        column5.setPrefWidth(128);
+        column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
+        column5.setStyle("-fx-alignment: CENTER;");
 
 
-
-
-
-        tableView.getColumns().addAll(column1, column2, column3, column4);
+        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
 
 
         tableView.getItems().addAll(items);

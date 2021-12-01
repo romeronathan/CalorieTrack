@@ -22,6 +22,8 @@ public class Main extends Application {
     public static TabPane tabPane;
     public static Stage mainStage;
     public static Day activeDay = new DayTable().getRecentDay();
+    public static BorderPane root;
+    public static Scene scene;
 
     public static void main(String[] args) {
         launch();
@@ -31,7 +33,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Database db = Database.getInstance();
 
-        BorderPane root = new BorderPane();
+        root = new BorderPane();
 
         //Menu
         MenuBar menu = new MenuBar();
@@ -61,11 +63,16 @@ public class Main extends Application {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         root.setCenter(tabPane);
 
+        mainStage = stage;
         stage.setTitle("Calorie Tracker");
-        Scene scene = new Scene(root, DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
+        scene = new Scene(root, DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public static void homeMenu() {
+        mainStage.setScene(scene);
     }
 
 }
