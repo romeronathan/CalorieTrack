@@ -5,17 +5,16 @@ import database.DBConst;
 import database.Database;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.scene.text.*;
 import scenes.*;
 import tables.DayTable;
 import tabs.*;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class Main extends Application {
 
@@ -30,7 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Database db = Database.getInstance();
-
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         BorderPane root = new BorderPane();
 
         //Menu
@@ -38,12 +37,15 @@ public class Main extends Application {
 
         Menu exitMenu = new Menu("File");
         MenuItem exit = new MenuItem("Exit Application");
+        formatter = new SimpleDateFormat("dd MMMM yyyy");
+        Menu activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
+
         exit.setOnAction(e-> {
             System.exit(0);
         });
         exitMenu.getItems().addAll(exit);
 
-        menu.getMenus().addAll(exitMenu);
+        menu.getMenus().addAll(exitMenu, activeDayTitle);
         root.setTop(menu);
 
         //TabPane
@@ -57,9 +59,16 @@ public class Main extends Application {
         dailyGoalTab dailyGoalTab = tabs.dailyGoalTab.getInstance();
         creditTab creditTab = tabs.creditTab.getInstance();
 
+
+
+
+
+
         tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab, creditTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+
         root.setCenter(tabPane);
+
 
         stage.setTitle("Calorie Tracker");
         Scene scene = new Scene(root, DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
