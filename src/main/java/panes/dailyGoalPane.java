@@ -14,6 +14,7 @@ import launch.Main;
 import scenes.*;
 import tables.DayTable;
 import tables.NutritionTable;
+import tabs.dailyTrackerTab;
 
 public class dailyGoalPane extends BorderPane {
 
@@ -45,7 +46,8 @@ public class dailyGoalPane extends BorderPane {
                 dailyGoalInt = Integer.parseInt(dailyGoal.getText());
                 currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
                 day.setCalorieGoal(dailyGoalInt);
-
+                dailyTrackerTab tab = dailyTrackerTab.getInstance();
+                tab.refresh();
 
                 dailyGoal.clear();
                 //TODO: Save daily goal to database
