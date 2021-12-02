@@ -26,7 +26,6 @@ public class Main extends Application {
     public static Menu activeDayTitle;
     public static MenuBar menu = new MenuBar();
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public static Day activeDay = new DayTable().getRecentDay();
     public static BorderPane root;
     public static Scene scene;
 
@@ -60,9 +59,9 @@ public class Main extends Application {
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        Menu.getItems().addAll(credits, exit, activeDayTitle);
+        Menu.getItems().addAll(credits, exit);
 
-        menu.getMenus().addAll(Menu);
+        menu.getMenus().addAll(Menu, activeDayTitle);
         root.setTop(menu);
 
         //TabPane
