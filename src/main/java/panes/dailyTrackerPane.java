@@ -94,7 +94,7 @@ public class dailyTrackerPane extends BorderPane {
         breakdownChart.setTitle("Calorie Intake Breakdown");
         breakdownChart.setLabelsVisible(true);
         breakdownChart.setPrefWidth(350);
-//        breakdownChart.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        breakdownChart.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         this.setRight(breakdownChart);
         generateChart();
 
