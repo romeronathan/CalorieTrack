@@ -1,6 +1,7 @@
 package panes;
 
 import Models.Day;
+import constants.Const;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 public class addDayPane extends BorderPane {
 
     public addDayPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -48,8 +49,12 @@ public class addDayPane extends BorderPane {
 
 
 
+        dayTF.setFont(Const.TEXT_FONT);
+        dayTF.setPrefColumnCount(10);
+        GridPane.setConstraints(dayTF, 0, 0);
 
         Button submit = new Button("Submit");
+        submit.setFont(Const.BUTTON_FONT);
         GridPane.setConstraints(submit, 1, 0);
         submit.setOnAction(e -> {
             if (dayTF.getText().isEmpty()) {
@@ -110,6 +115,7 @@ public class addDayPane extends BorderPane {
         });
 
         Button clear = new Button("Clear");
+        clear.setFont(Const.BUTTON_FONT);
         GridPane.setConstraints(clear, 2, 0);
         clear.setOnAction(e -> {
             dayTF.clear();

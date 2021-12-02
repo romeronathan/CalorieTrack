@@ -2,6 +2,7 @@ package panes;
 
 import Models.Day;
 import Models.NutritionItem;
+import constants.Const;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -18,12 +19,12 @@ public class weeklyProgressPane extends BorderPane {
     public TableView tableView;
 
     public weeklyProgressPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         TableColumn<Day, String> column1 = new TableColumn<>("Day");
         column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getDate() + ""));

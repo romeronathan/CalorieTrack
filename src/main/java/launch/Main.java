@@ -1,6 +1,7 @@
 package launch;
 
 import Models.Day;
+import constants.Const;
 import database.DBConst;
 import database.Database;
 import javafx.application.Application;
@@ -25,6 +26,10 @@ public class Main extends Application {
     public static Menu activeDayTitle;
     public static MenuBar menu = new MenuBar();
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    public static Day activeDay = new DayTable().getRecentDay();
+    public static BorderPane root;
+    public static Scene scene;
+
     public static void main(String[] args) {
         launch();
     }
@@ -37,10 +42,17 @@ public class Main extends Application {
         if(activeDay == null) {
             activeDay = new DayTable().getRecentDay();
         }
+        root = new BorderPane();
+
         //Menu
 
-        Menu exitMenu = new Menu("File");
-        Menu blankMenu = new Menu(" ");
+        Menu Menu = new Menu("File");
+
+        MenuItem credits = new MenuItem("Credits");
+        credits.setOnAction(e -> {
+            mainStage.setScene(new creditsScene());
+        });
+
         MenuItem exit = new MenuItem("Exit Application");
         formatter = new SimpleDateFormat("dd MMMM yyyy");
         activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
@@ -48,9 +60,9 @@ public class Main extends Application {
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        exitMenu.getItems().addAll(exit);
+        Menu.getItems().addAll(credits, exit, activeDayTitle);
 
-        menu.getMenus().addAll(exitMenu, blankMenu, activeDayTitle);
+        menu.getMenus().addAll(Menu);
         root.setTop(menu);
 
         //TabPane
@@ -62,21 +74,15 @@ public class Main extends Application {
         addItemTab addItemTab = tabs.addItemTab.getInstance();
         addDayTab addDayTab = tabs.addDayTab.getInstance();
         dailyGoalTab dailyGoalTab = tabs.dailyGoalTab.getInstance();
-        creditTab creditTab = tabs.creditTab.getInstance();
 
-
-
-
-
-
-        tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab, creditTab);
+        tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         root.setCenter(tabPane);
 
-
+        mainStage = stage;
         stage.setTitle("Calorie Tracker");
-        Scene scene = new Scene(root, DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
+        scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         stage.setScene(scene);
         stage.show();
 
@@ -91,6 +97,10 @@ public class Main extends Application {
         tab.refresh();
         dailyGoalTab goalTab = dailyGoalTab.getInstance();
         goalTab.refresh();
+    }
+
+    public static void homeMenu() {
+        mainStage.setScene(scene);
     }
 
 }

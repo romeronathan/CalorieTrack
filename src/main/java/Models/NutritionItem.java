@@ -1,10 +1,14 @@
 package Models;
 
 
+import database.DBConst;
 import enums.NutritionEnum;
 import javafx.scene.control.*;
+import scenes.updateItemScene;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+
+import static launch.Main.mainStage;
 
 
 public class NutritionItem {
@@ -16,15 +20,17 @@ public class NutritionItem {
     private int portion;
     private int dayId;
     private String type;
-    private Button button;
+    private Button deleteButton;
+    private Button updateButton;
 
-    public NutritionItem(String name, int calories, int portion, int dayId) {
+    public NutritionItem(String name, int calories, int portion, int dayId, String type) {
         this.name = name;
         this.calories = calories;
         this.portion = portion;
         this.dayId = dayId;
-        this.button = new Button("Delete");
-
+        this.type = type;
+        this.deleteButton = new Button("Delete");
+        this.updateButton = new Button("Update");
 
     }
     public NutritionItem(int id, String name, int calories, int portion, int dayId, String type) {
@@ -34,13 +40,16 @@ public class NutritionItem {
         this.portion = portion;
         this.dayId = dayId;
         this.type = type;
-        this.button = new Button("Delete");
-        this.button.setOnAction(e -> {
+        this.deleteButton = new Button("Delete");
+        this.deleteButton.setOnAction(e -> {
             new NutritionTable().deleteItem("meal", this);
             dailyTrackerTab tab = dailyTrackerTab.getInstance();
             tab.refresh();
         });
-
+        this.updateButton = new Button("Update");
+        this.updateButton.setOnAction(e -> {
+            mainStage.setScene(new updateItemScene(this));
+        });
     }
 
 
@@ -52,12 +61,20 @@ public class NutritionItem {
         this.type = type;
     }
 
-    public Button getButton() {
-        return button;
+    public Button getDeleteButton() {
+        return deleteButton;
     }
 
-    public void setButton(Button button) {
-        this.button = button;
+    public void setDeleteButton(Button button) {
+        this.deleteButton = button;
+    }
+
+    public Button getUpdateButton() {
+        return updateButton;
+    }
+
+    public void setUpdateButton(Button button) {
+        this.updateButton = button;
     }
 
     public NutritionItem() {
