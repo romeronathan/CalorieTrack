@@ -47,6 +47,11 @@ public class Main extends Application {
 
         Menu Menu = new Menu("File");
 
+        MenuItem accountSettings = new MenuItem("Account Settings");
+        accountSettings.setOnAction(e -> {
+            mainStage.setScene(new accountSettingsScene());
+        });
+
         MenuItem credits = new MenuItem("Credits");
         credits.setOnAction(e -> {
             mainStage.setScene(new creditsScene());
@@ -59,7 +64,7 @@ public class Main extends Application {
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        Menu.getItems().addAll(credits, exit);
+        Menu.getItems().addAll(accountSettings, credits, exit);
 
         menu.getMenus().addAll(Menu, activeDayTitle);
         root.setTop(menu);

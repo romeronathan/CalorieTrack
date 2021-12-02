@@ -24,6 +24,7 @@ public class creditsPane extends BorderPane {
         this.setBackground(new Background(new BackgroundFill(Const.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Menu
+
         MenuBar menu = new MenuBar();
 
         Menu Menu = new Menu("File");
@@ -33,11 +34,16 @@ public class creditsPane extends BorderPane {
             Main.homeMenu();
         });
 
+        MenuItem accountSettings = new MenuItem("Account Settings");
+        accountSettings.setOnAction(e -> {
+            Main.mainStage.setScene(new accountSettingsScene());
+        });
+
         MenuItem exit = new MenuItem("Exit Application");
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        Menu.getItems().addAll(application, exit);
+        Menu.getItems().addAll(application, accountSettings, exit);
 
         menu.getMenus().addAll(Menu);
         this.setTop(menu);
