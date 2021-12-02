@@ -38,14 +38,20 @@ public class Main extends Application {
         //Menu
         MenuBar menu = new MenuBar();
 
-        Menu exitMenu = new Menu("File");
+        Menu Menu = new Menu("File");
+
+        MenuItem credits = new MenuItem("Credits");
+        credits.setOnAction(e -> {
+            mainStage.setScene(new creditsScene());
+        });
+
         MenuItem exit = new MenuItem("Exit Application");
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        exitMenu.getItems().addAll(exit);
+        Menu.getItems().addAll(credits, exit);
 
-        menu.getMenus().addAll(exitMenu);
+        menu.getMenus().addAll(Menu);
         root.setTop(menu);
 
         //TabPane
@@ -57,9 +63,8 @@ public class Main extends Application {
         addItemTab addItemTab = tabs.addItemTab.getInstance();
         addDayTab addDayTab = tabs.addDayTab.getInstance();
         dailyGoalTab dailyGoalTab = tabs.dailyGoalTab.getInstance();
-        creditTab creditTab = tabs.creditTab.getInstance();
 
-        tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab, creditTab);
+        tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         root.setCenter(tabPane);
 
