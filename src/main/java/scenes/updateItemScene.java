@@ -1,6 +1,7 @@
 package scenes;
 
 import Models.NutritionItem;
+import constants.Const;
 import database.DBConst;
 import javafx.scene.Scene;
 import panes.updateItemPane;
@@ -8,6 +9,6 @@ import panes.updateItemPane;
 public class updateItemScene extends Scene {
 
     public updateItemScene(NutritionItem item) {
-        super(new updateItemPane(item), DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
+        super(new updateItemPane(item), Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
     }
 }

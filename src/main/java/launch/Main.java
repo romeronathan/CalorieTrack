@@ -1,6 +1,7 @@
 package launch;
 
 import Models.Day;
+import constants.Const;
 import database.DBConst;
 import database.Database;
 import javafx.application.Application;
@@ -70,7 +71,7 @@ public class Main extends Application {
 
         mainStage = stage;
         stage.setTitle("Calorie Tracker");
-        scene = new Scene(root, DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
+        scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         stage.setScene(scene);
         stage.show();
 

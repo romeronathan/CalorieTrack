@@ -1,11 +1,12 @@
 package scenes;
 
+import constants.Const;
 import database.DBConst;
 import javafx.scene.Scene;
 import panes.dailyGoalPane;
 
 public class dailyGoalScene extends Scene {
     public dailyGoalScene() {
-        super(new dailyGoalPane(), DBConst.SCREEN_WIDTH, DBConst.SCREEN_HEIGHT);
+        super(new dailyGoalPane(), Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
     }
 }
