@@ -40,6 +40,7 @@ public class Main extends Application {
         //Menu
 
         Menu exitMenu = new Menu("File");
+        Menu blankMenu = new Menu(" ");
         MenuItem exit = new MenuItem("Exit Application");
         formatter = new SimpleDateFormat("dd MMMM yyyy");
         activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
@@ -49,7 +50,7 @@ public class Main extends Application {
         });
         exitMenu.getItems().addAll(exit);
 
-        menu.getMenus().addAll(exitMenu, activeDayTitle);
+        menu.getMenus().addAll(exitMenu, blankMenu, activeDayTitle);
         root.setTop(menu);
 
         //TabPane
