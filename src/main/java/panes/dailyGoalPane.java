@@ -3,6 +3,7 @@ package panes;
 import Models.Day;
 import Models.Drink;
 import Models.NutritionItem;
+import constants.Const;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +25,7 @@ public class dailyGoalPane extends BorderPane {
 
     int dailyGoalInt = day.getCalorieGoal();
     public dailyGoalPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content
         GridPane grid = new GridPane();
@@ -33,12 +34,14 @@ public class dailyGoalPane extends BorderPane {
 
         final TextField dailyGoal = new TextField();
         dailyGoal.setPromptText("Daily Calorie Goal");
+        dailyGoal.setFont(Const.TEXT_FONT);
         dailyGoal.setPrefColumnCount(10);
         dailyGoal.getText();
         GridPane.setConstraints(dailyGoal, 0, 0);
         grid.getChildren().add(dailyGoal);
 
         Button submitDailyGoal = new Button("Submit");
+        submitDailyGoal.setFont(Const.BUTTON_FONT);
         submitDailyGoal.setOnAction(e -> {
             if(dailyGoal.getText().isEmpty()) {
                 dailyGoal.setPromptText("Please enter a daily calorie goal");
@@ -65,11 +68,13 @@ public class dailyGoalPane extends BorderPane {
         grid.getChildren().add(submitDailyGoal);
 
         Button clear = new Button("Clear");
+        clear.setFont(Const.BUTTON_FONT);
         GridPane.setConstraints(clear, 2, 0);
         grid.getChildren().add(clear);
         grid.setAlignment(Pos.CENTER);
 
         currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
+        currentDailyGoal.setFont(Const.TEXT_FONT);
         GridPane.setConstraints(currentDailyGoal, 0, 1);
         grid.getChildren().add(currentDailyGoal);
 

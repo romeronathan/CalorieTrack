@@ -2,6 +2,7 @@ package panes;
 
 import Models.Day;
 import Models.NutritionItem;
+import constants.Const;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
@@ -33,7 +34,7 @@ public class dailyTrackerPane extends BorderPane {
     public dailyTrackerPane() {
         NutritionTable nutritionTable = new NutritionTable();
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         for(NutritionItem i : items) {
             currentProgress += i.getCalories();
@@ -46,6 +47,7 @@ public class dailyTrackerPane extends BorderPane {
         addItem.setHgap(10);
 
         Text dailyGoalTracker = new Text("Daily Goal Tracker: " + currentProgress + "/" + dailyGoal + "\t\t");
+        dailyGoalTracker.setFont(Const.TEXT_FONT);
         addItem.add(dailyGoalTracker, 1, 0);
 
         ProgressBar progressBar = new ProgressBar();
@@ -60,7 +62,7 @@ public class dailyTrackerPane extends BorderPane {
         this.setTop(addItem);
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
         column1.setPrefWidth(150);
@@ -77,12 +79,12 @@ public class dailyTrackerPane extends BorderPane {
         TableColumn column4 = new TableColumn<>("Delete Records");
         column4.setPrefWidth(112);
         column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
-        column4.setStyle("-fx-alignment: CENTER;");
+        column4.setStyle(Const.CENTER_ALIGNMENT);
 
         TableColumn column5 = new TableColumn<>("Update Records");
         column5.setPrefWidth(112);
         column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
-        column5.setStyle("-fx-alignment: CENTER;");
+        column5.setStyle(Const.CENTER_ALIGNMENT);
 
 
         tableView.getColumns().addAll(column1, column2, column3, column4, column5);
@@ -94,7 +96,7 @@ public class dailyTrackerPane extends BorderPane {
         breakdownChart.setTitle("Calorie Intake Breakdown");
         breakdownChart.setLabelsVisible(true);
         breakdownChart.setPrefWidth(350);
-        breakdownChart.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        breakdownChart.setBackground(new Background(new BackgroundFill(Const.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         this.setRight(breakdownChart);
         generateChart();
 

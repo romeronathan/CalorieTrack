@@ -2,6 +2,7 @@ package panes;
 
 import Models.Day;
 import Models.NutritionItem;
+import constants.Const;
 import database.DBConst;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,7 +24,7 @@ public class updateItemPane extends BorderPane {
     Day day = Main.activeDay;
 
     public updateItemPane(NutritionItem item) {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));

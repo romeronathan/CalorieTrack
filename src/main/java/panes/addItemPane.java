@@ -3,6 +3,7 @@ package panes;
 import Models.Day;
 import Models.Drink;
 import Models.NutritionItem;
+import constants.Const;
 import enums.NutritionEnum;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,7 +26,7 @@ public class addItemPane extends BorderPane {
     Day day = Main.activeDay;
 
     public addItemPane() {
-        this.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Content
 
@@ -34,32 +35,42 @@ public class addItemPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
+        Text successfulEntry = new Text("Successfully added item!");
+        successfulEntry.setFill(Const.GREEN);
+        successfulEntry.setFont(Const.SUCCESSFUL_ENTRY_FONT);
+        successfulEntry.setVisible(false);
+        GridPane.setConstraints(successfulEntry, 0, 0);
+        grid.getChildren().add(successfulEntry);
+
         final TextField drinkNameTF = new TextField();
         drinkNameTF.setPromptText("Name");
+        drinkNameTF.setFont(Const.TEXT_FONT);
         drinkNameTF.setPrefColumnCount(10);
         drinkNameTF.getText();
-        GridPane.setConstraints(drinkNameTF, 0, 0);
+        GridPane.setConstraints(drinkNameTF, 0, 1);
         grid.getChildren().add(drinkNameTF);
 
         final TextField drinkCaloriesTF = new TextField();
         drinkCaloriesTF.setPromptText("Calories");
-        GridPane.setConstraints(drinkCaloriesTF, 0, 1);
+        drinkCaloriesTF.setFont(Const.TEXT_FONT);
+        GridPane.setConstraints(drinkCaloriesTF, 0, 2);
         grid.getChildren().add(drinkCaloriesTF);
 
         final TextField drinkServingTF = new TextField();
         drinkServingTF.setPrefColumnCount(15);
         drinkServingTF.setPromptText("Serving");
-        GridPane.setConstraints(drinkServingTF, 0, 2);
+        drinkServingTF.setFont(Const.TEXT_FONT);
+        GridPane.setConstraints(drinkServingTF, 0, 3);
         grid.getChildren().add(drinkServingTF);
-        final ComboBox<String> itemType = new ComboBox<>();
 
-        //TODO use enum values instead of string values
+        final ComboBox<String> itemType = new ComboBox<>();
         itemType.getItems().addAll("meal", "drink", "snack");
-        GridPane.setConstraints(itemType, 1, 0);
+        GridPane.setConstraints(itemType, 1, 1);
         itemType.setValue("meal");
         grid.getChildren().add(itemType);
 
         Button submitDrink = new Button("Submit");
+        submitDrink.setFont(Const.BUTTON_FONT);
         submitDrink.setOnAction(e -> {
             if(drinkNameTF.getText().isEmpty() || drinkCaloriesTF.getText().isEmpty() || drinkServingTF.getText().isEmpty()) {
                 if(drinkNameTF.getText().isEmpty()) {
@@ -86,23 +97,25 @@ public class addItemPane extends BorderPane {
                 dailyTrackerTab tab = dailyTrackerTab.getInstance();
                 tab.refresh();
 
+                successfulEntry.setVisible(true);
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();
                 drinkServingTF.clear();
             }
 
         });
-        GridPane.setConstraints(submitDrink, 1, 1);
+        GridPane.setConstraints(submitDrink, 1, 2);
         grid.getChildren().add(submitDrink);
 
 
         Button clear = new Button("Clear");
+        clear.setFont(Const.BUTTON_FONT);
         clear.setOnAction(e -> {
             drinkNameTF.clear();
             drinkCaloriesTF.clear();
             drinkServingTF.clear();
         });
-        GridPane.setConstraints(clear, 1, 2);
+        GridPane.setConstraints(clear, 1, 3);
         grid.getChildren().add(clear);
         grid.setAlignment(Pos.CENTER);
 
