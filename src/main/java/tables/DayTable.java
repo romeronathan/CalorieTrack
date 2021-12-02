@@ -32,6 +32,8 @@ public class DayTable implements DayDAO {
             Statement getDays = db.getConnection().createStatement();
             ResultSet data = getDays.executeQuery(query);
 
+
+
             while(data.next()) {
                 days.add(
                         new Day(data.getInt(DBTableValues.DAY_COLUMN_ID),
@@ -44,6 +46,7 @@ public class DayTable implements DayDAO {
             throwable.printStackTrace();
         }
         return days;
+
     }
     /**
      * @param id

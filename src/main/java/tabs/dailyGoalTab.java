@@ -2,11 +2,14 @@ package tabs;
 
 import javafx.scene.control.Tab;
 import panes.dailyGoalPane;
+import panes.dailyTrackerPane;
 
 public class dailyGoalTab extends Tab {
 
     private static dailyGoalTab tab;
-
+    public void refresh(){
+        this.setContent(new dailyGoalPane());
+    }
     public dailyGoalTab() {
         this.setText("Daily Goal");
         this.setClosable(false);

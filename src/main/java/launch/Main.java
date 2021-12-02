@@ -85,7 +85,12 @@ public class Main extends Application {
         formatter = new SimpleDateFormat("dd MMMM yyyy");
         activeDay = day;
         activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
-        menu.getMenus().remove(1);
+        menu.getMenus().remove(2);
         menu.getMenus().add(activeDayTitle);
+        dailyTrackerTab tab = dailyTrackerTab.getInstance();
+        tab.refresh();
+        dailyGoalTab goalTab = dailyGoalTab.getInstance();
+        goalTab.refresh();
     }
+
 }
