@@ -47,12 +47,6 @@ public class addDayPane extends BorderPane {
         calorieTF.setPrefColumnCount(25);
         GridPane.setConstraints(calorieTF, 0, 3);
 
-
-
-        dayTF.setFont(Const.TEXT_FONT);
-        dayTF.setPrefColumnCount(10);
-        GridPane.setConstraints(dayTF, 0, 0);
-
         Button submit = new Button("Submit");
         submit.setFont(Const.BUTTON_FONT);
         GridPane.setConstraints(submit, 1, 0);
