@@ -28,15 +28,24 @@ public class weeklyProgressPane extends BorderPane {
 
         TableColumn<Day, String> column1 = new TableColumn<>("Day");
         column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getDate() + ""));
-        column1.setPrefWidth(340);
+        column1.setPrefWidth(256);
 
         TableColumn<Day, String> column2 = new TableColumn<>("Calorie Consumption");
         column2.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCurrentCalories() + ""));
-        column2.setPrefWidth(340);
+        column2.setPrefWidth(256);
 
         TableColumn<Day, String> column3 = new TableColumn<>("Calorie Goal");
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalorieGoal() + ""));
-        column3.setPrefWidth(340);
+        column3.setPrefWidth(256);
+
+        TableColumn<Day, String> column4 = new TableColumn<>("Goal Status");
+        //TODO set checkmark image or xmark image for if goal is met or not
+//        column4.setCellValueFactory(e -> new SimpleStringProperty());
+        column4.setPrefWidth(128);
+
+        TableColumn<Day, String> column5 = new TableColumn<>("View Day");
+        column5.setCellValueFactory(e -> new SimpleStringProperty());
+        column5.setPrefWidth(128);
 
 
 

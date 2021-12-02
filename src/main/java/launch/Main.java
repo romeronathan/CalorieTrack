@@ -47,6 +47,11 @@ public class Main extends Application {
 
         Menu Menu = new Menu("File");
 
+        MenuItem test = new MenuItem("Test");
+        test.setOnAction(e -> {
+            mainStage.setScene(new viewDayScene());
+        });
+
         MenuItem accountSettings = new MenuItem("Account Settings");
         accountSettings.setOnAction(e -> {
             mainStage.setScene(new accountSettingsScene());
@@ -64,7 +69,7 @@ public class Main extends Application {
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        Menu.getItems().addAll(accountSettings, credits, exit);
+        Menu.getItems().addAll(test,accountSettings, credits, exit);
 
         menu.getMenus().addAll(Menu, activeDayTitle);
         root.setTop(menu);
@@ -105,6 +110,11 @@ public class Main extends Application {
 
     public static void homeMenu() {
         mainStage.setScene(scene);
+    }
+
+    public static void returnToWeeklyProgress() {
+        mainStage.setScene(scene);
+        tabPane.getSelectionModel().select(1);
     }
 
 }
