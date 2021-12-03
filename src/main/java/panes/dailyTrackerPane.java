@@ -35,7 +35,7 @@ public class dailyTrackerPane extends BorderPane {
         NutritionTable nutritionTable = new NutritionTable();
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
         this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-
+        currentProgress = day.getCurrentCalories();
 
 
         //Content
