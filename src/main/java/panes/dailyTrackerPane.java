@@ -105,6 +105,7 @@ public class dailyTrackerPane extends BorderPane {
         System.out.println("MAde it here");
 
         currentProgress = 0;
+        dailyGoal = 0;
         tableView.getItems().clear();
         tableView.getItems().addAll(items);
 

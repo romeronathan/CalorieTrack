@@ -3,9 +3,13 @@ package panes;
 import Models.Day;
 import Models.NutritionItem;
 import constants.Const;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +19,8 @@ import launch.Main;
 import scenes.*;
 import tables.DayTable;
 
+
+import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -26,6 +32,19 @@ public class weeklyProgressPane extends BorderPane {
         this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         ArrayList<Day> days = new DayTable().getAllDays();
+
+            Image imgOne = new Image("file:images/checkmark.png");
+            Image imgTwo = new Image("file:images/xmark.png");
+
+            for (Day cals : days) {
+                System.out.println(cals.getCalorieGoal());
+                System.out.println(cals.getCurrentCalories());
+            }
+
+
+
+
+
 
         //Content
 
@@ -44,7 +63,8 @@ public class weeklyProgressPane extends BorderPane {
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalorieGoal() + ""));
         column3.setPrefWidth(256);
 
-        TableColumn<Day, String> column4 = new TableColumn<>("Goal Status");
+        TableColumn<Day, String> column4 = new TableColumn("Goal Status");
+        column4.setCellValueFactory(new PropertyValueFactory<>("dayImage"));
         //TODO set checkmark image or xmark image for if goal is met or not
 //        column4.setCellValueFactory(e -> new SimpleStringProperty());
         column4.setPrefWidth(128);
