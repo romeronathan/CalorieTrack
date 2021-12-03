@@ -5,6 +5,8 @@ import Models.Drink;
 import Models.NutritionItem;
 import constants.Const;
 import enums.NutritionEnum;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -12,6 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import launch.Main;
 import scenes.*;
 import tables.DayTable;
@@ -98,6 +101,7 @@ public class addItemPane extends BorderPane {
                 tab.refresh();
 
                 successfulEntry.setVisible(true);
+                new Timeline(new KeyFrame(Duration.seconds(1), ae -> successfulEntry.setVisible(false))).play();
                 drinkNameTF.clear();
                 drinkCaloriesTF.clear();
                 drinkServingTF.clear();

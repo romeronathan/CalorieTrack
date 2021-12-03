@@ -3,12 +3,16 @@ package Models;
 
 import database.DBConst;
 import enums.NutritionEnum;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.*;
+import javafx.util.Duration;
 import scenes.updateItemScene;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
 
 import static launch.Main.mainStage;
+import static panes.dailyTrackerPane.deletedRecord;
 
 
 public class NutritionItem {
@@ -45,6 +49,8 @@ public class NutritionItem {
             new NutritionTable().deleteItem(this.type, this);
             dailyTrackerTab tab = dailyTrackerTab.getInstance();
             tab.refresh();
+            deletedRecord.setVisible(true);
+            new Timeline(new KeyFrame(Duration.seconds(1), ae -> deletedRecord.setVisible(false))).play();
         });
         this.updateButton = new Button("Update");
         this.updateButton.setOnAction(e -> {
