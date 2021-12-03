@@ -42,7 +42,7 @@ public class NutritionItem {
         this.type = type;
         this.deleteButton = new Button("Delete");
         this.deleteButton.setOnAction(e -> {
-            new NutritionTable().deleteItem("meal", this);
+            new NutritionTable().deleteItem(this.type, this);
             dailyTrackerTab tab = dailyTrackerTab.getInstance();
             tab.refresh();
         });
