@@ -5,6 +5,8 @@ import Models.NutritionItem;
 import constants.Const;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
@@ -28,8 +30,10 @@ public class dailyTrackerPane extends BorderPane {
 //    double currentProgress = 250;
     double dailyGoal = day.getCalorieGoal();
     double progressPercentage;
+    public static Text deletedRecord;
     public TableView tableView;
     PieChart breakdownChart;
+    ObservableList<PieChart.Data> pieChartData;
 
     public dailyTrackerPane() {
         NutritionTable nutritionTable = new NutritionTable();
@@ -55,10 +59,22 @@ public class dailyTrackerPane extends BorderPane {
         if(progressPercentage > 1) {
             progressPercentage = 1;
         }
+        if(currentProgress > dailyGoal) {
+            progressBar.setStyle("-fx-accent: red;");
+        } else {
+            progressBar.setStyle("-fx-accent: green;");
+        }
         progressBar.setProgress(progressPercentage);
         progressBar.setPrefWidth(200);
         progressBar.setPrefHeight(20);
         addItem.add(progressBar, 2, 0);
+
+        deletedRecord = new Text("\tRecord Deleted!");
+        deletedRecord.setFont(Const.TITLE_FONT);
+        deletedRecord.setFill(Color.RED);
+        deletedRecord.setVisible(false);
+        addItem.add(deletedRecord, 3, 0);
+
         this.setTop(addItem);
 
         tableView = new TableView();
@@ -112,9 +128,33 @@ public class dailyTrackerPane extends BorderPane {
 
     }
 
-    //TODO generateChart method
     public void generateChart() {
+        ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
 
+        int mealCalories = 0;
+        int snackCalories = 0;
+        int drinkCalories = 0;
+
+        for(NutritionItem i : items) {
+            if(i.getType().equals("meal")) {
+                mealCalories += i.getCalories();
+            }
+            else if(i.getType().equals("snack")) {
+                snackCalories += i.getCalories();
+            }
+            else if(i.getType().equals("drink")) {
+                drinkCalories += i.getCalories();
+            }
+        }
+//        System.out.println("Meal Calories: " + mealCalories + " Snack Calories: " + snackCalories + " Drink Calories: " + drinkCalories);
+
+        pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Meal", mealCalories),
+                new PieChart.Data("Snack", snackCalories),
+                new PieChart.Data("Drink", drinkCalories)
+        );
+
+        breakdownChart.setData(pieChartData);
     }
 
 }
