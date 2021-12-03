@@ -12,6 +12,7 @@ public interface DayDAO {
     public void deleteDay(int dayId);
     public Day getRecentDay();
     public Day getDayByDate(Date date);
+    public int getDaysCurrentCalories(int dayId);
     public ArrayList<Day> getAllDays();
     public Day getDay(int dayID);
     public ArrayList<NutritionItem> getDayItems(int dayId);

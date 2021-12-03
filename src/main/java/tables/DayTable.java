@@ -45,6 +45,8 @@ public class DayTable implements DayDAO {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+
+
         return days;
 
     }
@@ -179,6 +181,7 @@ public class DayTable implements DayDAO {
         dayItems.addAll(meals);
         dayItems.addAll(drinks);
         dayItems.addAll(snacks);
+        
 
 
         return dayItems;
@@ -274,6 +277,35 @@ public class DayTable implements DayDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int getDaysCurrentCalories(int dayId) {
+
+        // Create a query to get calories from all meal, drink and snack tables for the day
+        String query = "SELECT " + DBTableValues.NUTRITION_COLUMN_CALORIES + " FROM " + DBTableValues.TABLE_MEAL +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId +
+                " UNION ALL " +
+                "SELECT " + DBTableValues.NUTRITION_COLUMN_CALORIES + " FROM " + DBTableValues.TABLE_DRINK +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId +
+                " UNION ALL " +
+                "SELECT " + DBTableValues.NUTRITION_COLUMN_CALORIES + " FROM " + DBTableValues.TABLE_SNACK +
+                " WHERE " + DBTableValues.NUTRITION_COLUMN_DAYID + " = " + dayId;
+
+        
+        int calories = 0;
+        try {
+            Statement getDays = db.getConnection().createStatement();
+            ResultSet data = getDays.executeQuery(query);
+
+            while(data.next()) {
+                calories += data.getInt(DBTableValues.NUTRITION_COLUMN_CALORIES);
+            }
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return calories;
     }
 
 }

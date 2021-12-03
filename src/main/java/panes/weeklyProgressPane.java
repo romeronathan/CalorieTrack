@@ -13,13 +13,19 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import launch.Main;
 import scenes.*;
+import tables.DayTable;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class weeklyProgressPane extends BorderPane {
 
     public TableView tableView;
-
+    private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public weeklyProgressPane() {
         this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        ArrayList<Day> days = new DayTable().getAllDays();
 
         //Content
 
@@ -27,7 +33,7 @@ public class weeklyProgressPane extends BorderPane {
         tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         TableColumn<Day, String> column1 = new TableColumn<>("Day");
-        column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getDate() + ""));
+        column1.setCellValueFactory(e -> new SimpleStringProperty(formatter.format(e.getValue().getDate()) + ""));
         column1.setPrefWidth(256);
 
         TableColumn<Day, String> column2 = new TableColumn<>("Calorie Consumption");
@@ -50,6 +56,7 @@ public class weeklyProgressPane extends BorderPane {
 
 
         tableView.getColumns().addAll(column1, column2, column3, column4, column5);
+        tableView.getItems().addAll(days);
         this.setCenter(tableView);
 
     }

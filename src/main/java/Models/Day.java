@@ -2,6 +2,7 @@ package Models;
 
 import javafx.scene.control.Button;
 import scenes.viewDayScene;
+import tables.DayTable;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,12 +38,14 @@ public class Day {
         this.date = date;
         this.calorieGoal = calorieGoal;
         this.viewDayButton = new Button("View Day");
+        this.currentCalories = new DayTable().getDaysCurrentCalories(this.getId());
     }
     public Day(int dayId, Date date, int calorieGoal) {
         this.id = dayId;
         this.date = date;
         this.calorieGoal = calorieGoal;
         this.viewDayButton = new Button("View Day");
+        this.currentCalories = new DayTable().getDaysCurrentCalories(this.getId());
         viewDayButton.setOnAction(e -> {
             mainStage.setScene(new viewDayScene());
         });

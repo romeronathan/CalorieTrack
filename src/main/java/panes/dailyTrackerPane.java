@@ -24,7 +24,7 @@ public class dailyTrackerPane extends BorderPane {
 
     String itemName;
     Day day = Main.activeDay;
-    double currentProgress = 0;
+    double currentProgress = day.getCurrentCalories();
 //    double currentProgress = 250;
     double dailyGoal = day.getCalorieGoal();
     double progressPercentage;
@@ -36,9 +36,7 @@ public class dailyTrackerPane extends BorderPane {
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
         this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        for(NutritionItem i : items) {
-            currentProgress += i.getCalories();
-        }
+
 
         //Content
 
