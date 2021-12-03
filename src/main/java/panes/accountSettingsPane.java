@@ -67,7 +67,7 @@ public class accountSettingsPane extends BorderPane {
         GridPane.setConstraints(serverLocationTF, 0, 2);
 
         final TextField databaseTF = new TextField();
-        databaseTF.setPromptText("Calories");
+        databaseTF.setPromptText("Database");
         databaseTF.setPrefColumnCount(25);
         GridPane.setConstraints(databaseTF, 0, 3);
 

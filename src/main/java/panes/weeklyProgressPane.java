@@ -49,7 +49,7 @@ public class weeklyProgressPane extends BorderPane {
 
 
 
-        tableView.getColumns().addAll(column1, column2, column3);
+        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
         this.setCenter(tableView);
 
     }

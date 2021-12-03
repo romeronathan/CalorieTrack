@@ -2,20 +2,17 @@ package launch;
 
 import Models.Day;
 import constants.Const;
-import database.DBConst;
 import database.Database;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.scene.text.*;
 import scenes.*;
 import tables.DayTable;
 import tabs.*;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class Main extends Application {
@@ -92,6 +89,7 @@ public class Main extends Application {
         mainStage = stage;
         stage.setTitle("Calorie Tracker");
         scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+        
         stage.setScene(scene);
         stage.show();
 
