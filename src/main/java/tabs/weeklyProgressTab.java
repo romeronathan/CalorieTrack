@@ -1,6 +1,7 @@
 package tabs;
 
 import javafx.scene.control.Tab;
+import panes.dailyTrackerPane;
 import panes.weeklyProgressPane;
 
 /**
@@ -17,6 +18,9 @@ public class weeklyProgressTab extends Tab {
     public weeklyProgressTab() {
         this.setText("Weekly Progress");
         this.setClosable(false);
+        this.setContent(new weeklyProgressPane());
+    }
+    public void refresh(){
         this.setContent(new weeklyProgressPane());
     }
 

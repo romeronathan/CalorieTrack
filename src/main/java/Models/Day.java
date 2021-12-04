@@ -12,6 +12,7 @@ import scenes.viewDayScene;
 import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+import tabs.weeklyProgressTab;
 
 
 import java.util.ArrayList;
@@ -92,6 +93,8 @@ public class Day {
         this.currentCalories = new DayTable().getDaysCurrentCalories(this.getId());
         this.dayImage = getImageView();
     }
+
+
     public Day(int dayId, Date date, int calorieGoal) {
         this.id = dayId;
         this.date = date;
@@ -99,23 +102,29 @@ public class Day {
         this.viewDayButton = new Button("View Day");
         this.currentCalories = new DayTable().getDaysCurrentCalories(this.getId());
         viewDayButton.setOnAction(e -> {
-            mainStage.setScene(new viewDayScene());
+            mainStage.setScene(new viewDayScene(this));
         });
         this.dayImage = getImageView();
 
         this.deleteButton = new Button("Delete");
         this.deleteButton.setOnAction(e -> {
             new DayTable().deleteDay(this.id);
-            dailyTrackerTab tab = dailyTrackerTab.getInstance();
+            weeklyProgressTab tab = weeklyProgressTab.getInstance();
             tab.refresh();
-            deletedRecord.setVisible(true);
-            new Timeline(new KeyFrame(Duration.seconds(1), ae -> deletedRecord.setVisible(false))).play();
         });
         this.activeButton = new Button("Make Active");
         this.activeButton.setOnAction(e -> {
-            Main.activeDay = this;
+           Main.updateDate(this);
         });
     }
+
+    public Button getDeleteButton() { return deleteButton; }
+
+    public void setDeleteButton(Button deleteButton) { this.deleteButton = deleteButton; }
+
+    public Button getActiveButton() { return activeButton; }
+
+    public void setActiveButton(Button activeButton) { this.activeButton = activeButton; }
 
     public Date getDate() {
         return date;

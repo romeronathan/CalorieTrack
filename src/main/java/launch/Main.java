@@ -51,10 +51,7 @@ public class Main extends Application {
 
         Menu Menu = new Menu("File");
 
-        MenuItem test = new MenuItem("Test");
-        test.setOnAction(e -> {
-            mainStage.setScene(new viewDayScene());
-        });
+
 
         MenuItem accountSettings = new MenuItem("Account Settings");
         accountSettings.setOnAction(e -> {
@@ -73,7 +70,7 @@ public class Main extends Application {
         exit.setOnAction(e-> {
             System.exit(0);
         });
-        Menu.getItems().addAll(test,accountSettings, credits, exit);
+        Menu.getItems().addAll(accountSettings, credits, exit);
 
         menu.getMenus().addAll(Menu, activeDayTitle);
         root.setTop(menu);
@@ -113,7 +110,7 @@ public class Main extends Application {
         formatter = new SimpleDateFormat("dd MMMM yyyy");
         activeDay = day;
         activeDayTitle = new Menu("Tracking date: " + formatter.format(activeDay.getDate()));
-        menu.getMenus().remove(2);
+        menu.getMenus().remove(1);
         menu.getMenus().add(activeDayTitle);
         dailyTrackerTab tab = dailyTrackerTab.getInstance();
         tab.refresh();

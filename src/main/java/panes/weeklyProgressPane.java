@@ -15,6 +15,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import launch.Main;
 import scenes.*;
 import tables.DayTable;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 public class weeklyProgressPane extends BorderPane {
 
     public TableView tableView;
+    public static Text weeklyDeletedRecord;
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public weeklyProgressPane() {
         this.setStyle(Const.BACKGROUND_STYLE);
@@ -43,10 +45,6 @@ public class weeklyProgressPane extends BorderPane {
             Image imgOne = new Image("file:images/checkmark.png");
             Image imgTwo = new Image("file:images/xmark.png");
 
-            for (Day cals : days) {
-                System.out.println(cals.getCalorieGoal());
-                System.out.println(cals.getCurrentCalories());
-            }
 
         //Content
 
@@ -59,11 +57,11 @@ public class weeklyProgressPane extends BorderPane {
 
         TableColumn<Day, String> column2 = new TableColumn<>("Calorie Consumption");
         column2.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCurrentCalories() + ""));
-        column2.setPrefWidth(256);
+        column2.setPrefWidth(128);
 
         TableColumn<Day, String> column3 = new TableColumn<>("Calorie Goal");
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalorieGoal() + ""));
-        column3.setPrefWidth(256);
+        column3.setPrefWidth(128);
 
         TableColumn<Day, String> column4 = new TableColumn("Goal Status");
         column4.setCellValueFactory(new PropertyValueFactory<>("dayImage"));
@@ -71,12 +69,26 @@ public class weeklyProgressPane extends BorderPane {
         column4.setStyle(Const.CENTER_ALIGNMENT_STYLE);
 
         TableColumn<Day, String> column5 = new TableColumn<>("View Day");
-        column5.setCellValueFactory(e -> new SimpleStringProperty());
+        column5.setCellValueFactory(new PropertyValueFactory<Day, String>("viewDayButton"));
         column5.setPrefWidth(128);
+        column5.setStyle(Const.CENTER_ALIGNMENT_STYLE);
 
-        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
+        TableColumn<Day, String> column6 = new TableColumn<>("Make Active");
+        column6.setCellValueFactory(new PropertyValueFactory<Day, String>("activeButton"));
+        column6.setPrefWidth(128);
+        column6.setStyle(Const.CENTER_ALIGNMENT_STYLE);
+
+        TableColumn<Day, String> column7 = new TableColumn<>("Delete Day");
+        column7.setCellValueFactory(new PropertyValueFactory<Day, String>("deleteButton"));
+        column7.setPrefWidth(128);
+        column7.setStyle(Const.CENTER_ALIGNMENT_STYLE);
+
+        tableView.getColumns().addAll(column1, column2, column3, column4, column5, column6, column7);
         tableView.getItems().addAll(days);
         this.setCenter(tableView);
+        weeklyDeletedRecord = new Text("\tRecord Deleted!");
+        weeklyDeletedRecord.setStyle(Const.DELETE_RECORD_STYLE);
+        weeklyDeletedRecord.setVisible(false);
 
     }
 
