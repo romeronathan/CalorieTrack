@@ -82,29 +82,33 @@ public class dailyTrackerPane extends BorderPane {
         tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
-        column1.setPrefWidth(150);
+        column1.setPrefWidth(118);
         column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getName()));
 
         TableColumn<NutritionItem, String> column2 = new TableColumn<>("Portion");
-        column2.setPrefWidth(150);
+        column2.setPrefWidth(118);
         column2.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getPortion() + ""));
 
         TableColumn<NutritionItem, String> column3 = new TableColumn<>("Calories");
-        column3.setPrefWidth(150);
+        column3.setPrefWidth(118);
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
 
-        TableColumn column4 = new TableColumn<>("Delete Records");
-        column4.setPrefWidth(112);
-        column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
-        column4.setStyle(Const.CENTER_ALIGNMENT);
+        TableColumn<NutritionItem, String> column4 = new TableColumn<>("Type");
+        column4.setPrefWidth(118);
+        column4.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getType()));
 
-        TableColumn column5 = new TableColumn<>("Update Records");
-        column5.setPrefWidth(112);
-        column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
+        TableColumn column5 = new TableColumn<>("Delete Records");
+        column5.setPrefWidth(100);
+        column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
         column5.setStyle(Const.CENTER_ALIGNMENT);
 
+        TableColumn column6 = new TableColumn<>("Update Records");
+        column6.setPrefWidth(100);
+        column6.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
+        column6.setStyle(Const.CENTER_ALIGNMENT);
 
-        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
+
+        tableView.getColumns().addAll(column1, column2, column3, column4, column5, column6);
 
         tableView.getItems().addAll(items);
         this.setCenter(tableView);
