@@ -2,11 +2,15 @@ package panes;
 
 import Models.Day;
 import constants.Const;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import launch.Main;
 import scenes.*;
 import tables.DayTable;
@@ -32,31 +36,39 @@ public class addDayPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
+        Text successfulEntry = new Text("Successfully added day!");
+        successfulEntry.setStyle(Const.SUCCESSFUL_ENTRY_STYLE);
+        successfulEntry.setVisible(false);
+        GridPane.setConstraints(successfulEntry, 0, 0);
+        grid.getChildren().add(successfulEntry);
+
         final TextField yearTF = new TextField();
         yearTF.setPromptText("Year");
         yearTF.setPrefColumnCount(10);
-        GridPane.setConstraints(yearTF, 0, 0);
+        GridPane.setConstraints(yearTF, 0, 1);
 
         final TextField monthTF = new TextField();
         monthTF.setPromptText("Month");
         monthTF.setPrefColumnCount(15);
-        GridPane.setConstraints(monthTF, 0, 1);
+        GridPane.setConstraints(monthTF, 0, 2);
 
 
         final TextField dayTF = new TextField();
         dayTF.setPromptText("Day");
         dayTF.setPrefColumnCount(20);
-        GridPane.setConstraints(dayTF, 0, 2);
+        GridPane.setConstraints(dayTF, 0, 3);
 
         final TextField calorieTF = new TextField();
         calorieTF.setPromptText("Calories");
         calorieTF.setPrefColumnCount(25);
-        GridPane.setConstraints(calorieTF, 0, 3);
+        GridPane.setConstraints(calorieTF, 0, 4);
 
         Button submit = new Button("Submit");
         submit.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(submit, 1, 0);
+        GridPane.setConstraints(submit, 1, 1);
         submit.setOnAction(e -> {
+            successfulEntry.setVisible(true);
+            new Timeline(new KeyFrame(Duration.seconds(1), ae -> successfulEntry.setVisible(false))).play();
             if (dayTF.getText().isEmpty()) {
                 dayTF.setPromptText("Please enter a day");
             } else {
@@ -97,28 +109,26 @@ public class addDayPane extends BorderPane {
 
                           Main.updateDate(newDay);
                        }
-
-
-
-
-
-
-
                    }
-
-
                }
                catch (Exception exception) {
 
                }
             }
+            dayTF.clear();
+            monthTF.clear();
+            yearTF.clear();
+            calorieTF.clear();
         });
 
         Button clear = new Button("Clear");
         clear.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(clear, 2, 0);
+        GridPane.setConstraints(clear, 1, 2);
         clear.setOnAction(e -> {
             dayTF.clear();
+            monthTF.clear();
+            yearTF.clear();
+            calorieTF.clear();
         });
 
         grid.getChildren().addAll(yearTF, monthTF, dayTF, calorieTF, submit, clear);

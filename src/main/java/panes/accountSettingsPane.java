@@ -3,10 +3,14 @@ package panes;
 import Models.Day;
 import constants.Const;
 import database.DBConst;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
 import launch.Main;
 import scenes.accountSettingsScene;
 import scenes.creditsScene;
@@ -75,47 +79,57 @@ public class accountSettingsPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
+        Text failedEntry = new Text("Form Incorrectly Filled!");
+        failedEntry.setStyle(Const.FAILED_ENTRY_STYLE);
+        failedEntry.setVisible(false);
+        GridPane.setConstraints(failedEntry, 0, 0);
+
         final TextField usernameTF = new TextField();
         usernameTF.setPromptText("Username");
         usernameTF.setText(username);
         usernameTF.setPrefColumnCount(25);
-        GridPane.setConstraints(usernameTF, 0, 0);
+        GridPane.setConstraints(usernameTF, 0, 1);
 
         final PasswordField passwordTF = new PasswordField();
         passwordTF.setPromptText("Password");
         passwordTF.setText(password);
         passwordTF.setPrefColumnCount(25);
-        GridPane.setConstraints(passwordTF, 0, 1);
+        GridPane.setConstraints(passwordTF, 0, 2);
 
 
         final TextField serverLocationTF = new TextField();
         serverLocationTF.setPromptText("Server Location");
         serverLocationTF.setText(serverLocation);
         serverLocationTF.setPrefColumnCount(25);
-        GridPane.setConstraints(serverLocationTF, 0, 2);
+        GridPane.setConstraints(serverLocationTF, 0, 3);
 
         final TextField databaseTF = new TextField();
         databaseTF.setPromptText("Database");
         databaseTF.setText(database);
         databaseTF.setPrefColumnCount(25);
-        GridPane.setConstraints(databaseTF, 0, 3);
+        GridPane.setConstraints(databaseTF, 0, 4);
 
         Button submit = new Button("Submit");
         submit.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(submit, 1, 0);
+        GridPane.setConstraints(submit, 1, 1);
         submit.setOnAction(e -> {
-            username = usernameTF.getText();
-            password = passwordTF.getText();
-            serverLocation = serverLocationTF.getText();
-            database = databaseTF.getText();
+            if(usernameTF.getText().isEmpty() || passwordTF.getText().isEmpty() || serverLocationTF.getText().isEmpty() || databaseTF.getText().isEmpty()) {
+                failedEntry.setVisible(true);
+                new Timeline(new KeyFrame(Duration.seconds(3), ae -> failedEntry.setVisible(false))).play();
+            } else {
+                username = usernameTF.getText();
+                password = passwordTF.getText();
+                serverLocation = serverLocationTF.getText();
+                database = databaseTF.getText();
 
-            updateSettings();
-            homeMenu();
+                updateSettings();
+                homeMenu();
+            }
         });
 
         Button clear = new Button("Clear");
         clear.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(clear, 2, 0);
+        GridPane.setConstraints(clear, 1, 2);
         clear.setOnAction(e -> {
             usernameTF.clear();
             passwordTF.clear();
@@ -123,7 +137,7 @@ public class accountSettingsPane extends BorderPane {
             databaseTF.clear();
         });
 
-        grid.getChildren().addAll(usernameTF, passwordTF, serverLocationTF, databaseTF, submit, clear);
+        grid.getChildren().addAll(usernameTF, passwordTF, serverLocationTF, databaseTF, submit, clear, failedEntry);
         grid.setAlignment(Pos.CENTER);
         this.setCenter(grid);
     }

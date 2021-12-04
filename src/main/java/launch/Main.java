@@ -136,7 +136,7 @@ public class Main extends Application {
 
     public static void returnToWeeklyProgress() {
         mainStage.setScene(scene);
-        tabPane.getSelectionModel().select(1);
+        tabPane.getSelectionModel().select(4);
     }
 
 }

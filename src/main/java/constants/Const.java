@@ -53,6 +53,12 @@ public class Const {
             "-fx-font-weight: bold;" +
             "-fx-font-posture: regular;";
 
+    public static final String FAILED_ENTRY_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 24;" +
+            "-fx-fill: rgb(255, 0, 0);" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-posture: regular;";
+
     public static final String CENTER_ALIGNMENT_STYLE = "-fx-alignment: CENTER;";
 
     public static final String TEXT_STYLE = "-fx-font-family: \"Times New Roman\"; " +
