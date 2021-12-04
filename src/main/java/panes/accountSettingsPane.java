@@ -2,6 +2,7 @@ package panes;
 
 import Models.Day;
 import constants.Const;
+import database.DBConst;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -24,7 +25,7 @@ import static launch.Main.homeMenu;
 
 public class accountSettingsPane extends BorderPane {
 
-    File accountSettings = new File("Account/account_settings");
+    public static File accountSettings = new File("Account/account_settings");
 
     public static String username;
     public static String password;
@@ -35,17 +36,7 @@ public class accountSettingsPane extends BorderPane {
     public accountSettingsPane() {
         this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        try {
-            Scanner in = new Scanner(accountSettings);
-            username = in.nextLine();
-            password = in.nextLine();
-            serverLocation = in.nextLine();
-            database = in.nextLine();
-            System.out.println(username + " " + password + " " + serverLocation + " " + database);
-            in.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        readSettings();
 
         MenuBar menu = new MenuBar();
 
@@ -110,21 +101,8 @@ public class accountSettingsPane extends BorderPane {
             password = passwordTF.getText();
             serverLocation = serverLocationTF.getText();
             database = databaseTF.getText();
-            //clear the file and write username, password, serverLocation, database
-            try {
-                Scanner in = new Scanner(accountSettings);
-                in.close();
-                accountSettings.delete();
-                accountSettings.createNewFile();
-                FileWriter fw = new FileWriter(accountSettings);
-                fw.write(username + "\n" + password + "\n" + serverLocation + "\n" + database);
-                fw.close();
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
 
+            updateSettings();
             homeMenu();
         });
 
@@ -141,5 +119,35 @@ public class accountSettingsPane extends BorderPane {
         grid.getChildren().addAll(usernameTF, passwordTF, serverLocationTF, databaseTF, submit, clear);
         grid.setAlignment(Pos.CENTER);
         this.setCenter(grid);
+    }
+
+    public static void readSettings() {
+        try {
+            Scanner in = new Scanner(accountSettings);
+            username = in.nextLine();
+            password = in.nextLine();
+            serverLocation = in.nextLine();
+            database = in.nextLine();
+            System.out.println(username + " " + password + " " + serverLocation + " " + database);
+            in.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void updateSettings() {
+        try {
+            Scanner in = new Scanner(accountSettings);
+            in.close();
+            accountSettings.delete();
+            accountSettings.createNewFile();
+            FileWriter fw = new FileWriter(accountSettings);
+            fw.write(username + "\n" + password + "\n" + serverLocation + "\n" + database);
+            fw.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
