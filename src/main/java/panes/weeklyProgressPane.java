@@ -65,9 +65,8 @@ public class weeklyProgressPane extends BorderPane {
 
         TableColumn<Day, String> column4 = new TableColumn("Goal Status");
         column4.setCellValueFactory(new PropertyValueFactory<>("dayImage"));
-        //TODO set checkmark image or xmark image for if goal is met or not
-//        column4.setCellValueFactory(e -> new SimpleStringProperty());
         column4.setPrefWidth(128);
+        column4.setStyle(Const.CENTER_ALIGNMENT_STYLE);
 
         TableColumn<Day, String> column5 = new TableColumn<>("View Day");
         column5.setCellValueFactory(e -> new SimpleStringProperty());
