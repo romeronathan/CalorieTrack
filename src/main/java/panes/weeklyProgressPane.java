@@ -29,7 +29,7 @@ public class weeklyProgressPane extends BorderPane {
     public TableView tableView;
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public weeklyProgressPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         ArrayList<Day> days = new DayTable().getAllDays();
 
@@ -49,7 +49,7 @@ public class weeklyProgressPane extends BorderPane {
         //Content
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setStyle(Const.BACKGROUND_STYLE);
 
         TableColumn<Day, String> column1 = new TableColumn<>("Day");
         column1.setCellValueFactory(e -> new SimpleStringProperty(formatter.format(e.getValue().getDate()) + ""));

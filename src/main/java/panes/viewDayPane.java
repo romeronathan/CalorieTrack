@@ -17,7 +17,7 @@ public class viewDayPane extends BorderPane {
     public TableView tableView;
 
     public viewDayPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         HBox hBox = new HBox();
         hBox.setPadding(new Insets(10, 10, 10, 10));
@@ -31,7 +31,7 @@ public class viewDayPane extends BorderPane {
         this.setTop(hBox);
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setStyle(Const.BACKGROUND_STYLE);
 
         TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
         column1.setPrefWidth(340);

@@ -29,7 +29,7 @@ public class addItemPane extends BorderPane {
     Day day = Main.activeDay;
 
     public addItemPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         //Content
 
@@ -39,15 +39,14 @@ public class addItemPane extends BorderPane {
         grid.setHgap(5);
 
         Text successfulEntry = new Text("Successfully added item!");
-        successfulEntry.setFill(Const.GREEN);
-        successfulEntry.setFont(Const.SUCCESSFUL_ENTRY_FONT);
+        successfulEntry.setStyle(Const.SUCCESSFUL_ENTRY_STYLE);
         successfulEntry.setVisible(false);
         GridPane.setConstraints(successfulEntry, 0, 0);
         grid.getChildren().add(successfulEntry);
 
         final TextField drinkNameTF = new TextField();
         drinkNameTF.setPromptText("Name");
-        drinkNameTF.setFont(Const.TEXT_FONT);
+        drinkNameTF.setStyle(Const.TEXT_STYLE);
         drinkNameTF.setPrefColumnCount(10);
         drinkNameTF.getText();
         GridPane.setConstraints(drinkNameTF, 0, 1);
@@ -55,14 +54,14 @@ public class addItemPane extends BorderPane {
 
         final TextField drinkCaloriesTF = new TextField();
         drinkCaloriesTF.setPromptText("Calories");
-        drinkCaloriesTF.setFont(Const.TEXT_FONT);
+        drinkCaloriesTF.setStyle(Const.TEXT_STYLE);
         GridPane.setConstraints(drinkCaloriesTF, 0, 2);
         grid.getChildren().add(drinkCaloriesTF);
 
         final TextField drinkServingTF = new TextField();
         drinkServingTF.setPrefColumnCount(15);
         drinkServingTF.setPromptText("Serving");
-        drinkServingTF.setFont(Const.TEXT_FONT);
+        drinkServingTF.setStyle(Const.TEXT_STYLE);
         GridPane.setConstraints(drinkServingTF, 0, 3);
         grid.getChildren().add(drinkServingTF);
 
@@ -73,7 +72,7 @@ public class addItemPane extends BorderPane {
         grid.getChildren().add(itemType);
 
         Button submitDrink = new Button("Submit");
-        submitDrink.setFont(Const.BUTTON_FONT);
+        submitDrink.setStyle(Const.BUTTON_STYLE);
         submitDrink.setOnAction(e -> {
             if(drinkNameTF.getText().isEmpty() || drinkCaloriesTF.getText().isEmpty() || drinkServingTF.getText().isEmpty()) {
                 if(drinkNameTF.getText().isEmpty()) {
@@ -113,7 +112,7 @@ public class addItemPane extends BorderPane {
 
 
         Button clear = new Button("Clear");
-        clear.setFont(Const.BUTTON_FONT);
+        clear.setStyle(Const.BUTTON_STYLE);
         clear.setOnAction(e -> {
             drinkNameTF.clear();
             drinkCaloriesTF.clear();
