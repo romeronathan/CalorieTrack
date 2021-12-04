@@ -16,6 +16,13 @@ import launch.Main;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to update the selected item in the table
+ */
+
 public class updateItemPane extends BorderPane {
 
     String itemName;
@@ -24,7 +31,7 @@ public class updateItemPane extends BorderPane {
     Day day = Main.activeDay;
 
     public updateItemPane(NutritionItem item) {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));

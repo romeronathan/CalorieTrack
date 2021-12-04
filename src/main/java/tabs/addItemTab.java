@@ -3,6 +3,13 @@ package tabs;
 import javafx.scene.control.Tab;
 import panes.addItemPane;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Tab Pane for addItemPane
+ */
+
 public class addItemTab extends Tab {
 
     private static addItemTab tab;
@@ -12,6 +19,13 @@ public class addItemTab extends Tab {
         this.setClosable(false);
         this.setContent(new addItemPane());
     }
+
+    /**
+     * @author Devon Divinecz
+     * @description Method to add tab to the tabPane
+     * @method getInstance
+     * @return tab
+     */
 
     public static addItemTab getInstance() {
         if (tab == null) {

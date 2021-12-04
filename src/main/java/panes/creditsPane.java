@@ -19,9 +19,16 @@ import javafx.util.Duration;
 import launch.Main;
 import scenes.*;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane that provides credits of the application
+ */
+
 public class creditsPane extends BorderPane {
     public creditsPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.CREDIT_BACKGROUND_STYLE);
 
         //Menu
 
@@ -57,26 +64,22 @@ public class creditsPane extends BorderPane {
         Text projectTitle = new Text();
         projectTitle.setText("Calorie Track");
         projectTitle.setTextAlignment(TextAlignment.CENTER);
-        projectTitle.setFont(Const.CREDIT_FONT);
-        projectTitle.setFill(Const.WHITE);
+        projectTitle.setStyle(Const.CREDITS_TEXT_STYLE);
 
         Text creators = new Text();
         creators.setText("Creators: Devon Divinecz & Nathan Romero");
         creators.setTextAlignment(TextAlignment.CENTER);
-        creators.setFont(Const.CREDIT_FONT);
-        creators.setFill(Const.WHITE);
+        creators.setStyle(Const.CREDITS_TEXT_STYLE);
 
         Text frontEnd = new Text();
         frontEnd.setText("Front End: Devon Divinecz");
         frontEnd.setTextAlignment(TextAlignment.CENTER);
-        frontEnd.setFont(Const.CREDIT_FONT);
-        frontEnd.setFill(Const.WHITE);
+        frontEnd.setStyle(Const.CREDITS_TEXT_STYLE);
 
         Text backEnd = new Text();
         backEnd.setText("Back End: Nathan Romero");
         backEnd.setTextAlignment(TextAlignment.CENTER);
-        backEnd.setFont(Const.CREDIT_FONT);
-        backEnd.setFill(Const.WHITE);
+        backEnd.setStyle(Const.CREDITS_TEXT_STYLE);
 
         //Animations
 
@@ -95,6 +98,12 @@ public class creditsPane extends BorderPane {
         this.setCenter(creditsBox);
 
     }
+
+    /**
+     * @author Devon Divinecz
+     * @description Method that creates a scroll animation for the credits
+     * @method creditScroll
+     */
 
     public TranslateTransition creditScroll(Node node) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(1500), node);

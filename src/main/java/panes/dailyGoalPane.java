@@ -17,6 +17,13 @@ import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to set the daily calorie goal for the user
+ */
+
 public class dailyGoalPane extends BorderPane {
 
    //TODO: Will equal to daily goal set in database
@@ -25,7 +32,7 @@ public class dailyGoalPane extends BorderPane {
 
     int dailyGoalInt = day.getCalorieGoal();
     public dailyGoalPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         //Content
         GridPane grid = new GridPane();
@@ -34,14 +41,14 @@ public class dailyGoalPane extends BorderPane {
 
         final TextField dailyGoal = new TextField();
         dailyGoal.setPromptText("Daily Calorie Goal");
-        dailyGoal.setFont(Const.TEXT_FONT);
+        dailyGoal.setStyle(Const.TEXT_STYLE);
         dailyGoal.setPrefColumnCount(10);
         dailyGoal.getText();
         GridPane.setConstraints(dailyGoal, 0, 0);
         grid.getChildren().add(dailyGoal);
 
         Button submitDailyGoal = new Button("Submit");
-        submitDailyGoal.setFont(Const.BUTTON_FONT);
+        submitDailyGoal.setStyle(Const.BUTTON_STYLE);
         submitDailyGoal.setOnAction(e -> {
             if(dailyGoal.getText().isEmpty()) {
                 dailyGoal.setPromptText("Please enter a daily calorie goal");
@@ -68,13 +75,13 @@ public class dailyGoalPane extends BorderPane {
         grid.getChildren().add(submitDailyGoal);
 
         Button clear = new Button("Clear");
-        clear.setFont(Const.BUTTON_FONT);
+        clear.setStyle(Const.BUTTON_STYLE);
         GridPane.setConstraints(clear, 2, 0);
         grid.getChildren().add(clear);
         grid.setAlignment(Pos.CENTER);
 
         currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
-        currentDailyGoal.setFont(Const.TEXT_FONT);
+        currentDailyGoal.setStyle(Const.TEXT_STYLE);
         GridPane.setConstraints(currentDailyGoal, 0, 1);
         grid.getChildren().add(currentDailyGoal);
 

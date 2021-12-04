@@ -15,6 +15,13 @@ import tabs.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public class Main extends Application {
 
     public static TabPane tabPane;
@@ -94,6 +101,14 @@ public class Main extends Application {
         stage.show();
 
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to update the active day in the menu bar
+     * @method @updateDate
+     * @param day
+     */
+
     public static void updateDate(Day day) {
         formatter = new SimpleDateFormat("dd MMMM yyyy");
         activeDay = day;
@@ -106,9 +121,21 @@ public class Main extends Application {
         goalTab.refresh();
     }
 
+    /**
+     * @author Devon Divinecz
+     * @description Method to return to the application
+     * @method homeMenu
+     */
+
     public static void homeMenu() {
         mainStage.setScene(scene);
     }
+
+    /**
+     * @author Devon Divinecz
+     * @description Method to return to the application and open a specific tab
+     * @method returnToWeeklyProgress
+     */
 
     public static void returnToWeeklyProgress() {
         mainStage.setScene(scene);

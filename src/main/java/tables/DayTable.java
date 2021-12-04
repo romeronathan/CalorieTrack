@@ -14,16 +14,26 @@ import java.util.Calendar;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description This class is used to create a table of days
+ */
+
 public class DayTable implements DayDAO {
 
     Database db = Database.getInstance();
 
     ArrayList<Day> days = new ArrayList<>();
+
     /**
-     * @param
+     * @author Nathan Romero
+     * @description Method to get all days from the database
+     * @method getAllDays
      * @return days
-     *
      */
+
     @Override
     public ArrayList<Day> getAllDays() {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY;
@@ -50,11 +60,15 @@ public class DayTable implements DayDAO {
         return days;
 
     }
+
     /**
+     * @author Nathan Romero
+     * @description Method to get day from the database
+     * @method getDau
      * @param id
      * @return day
-     *
      */
+
     @Override
     public Day getDay(int id) {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY +
@@ -73,11 +87,14 @@ public class DayTable implements DayDAO {
         }
         return null;
     }
+
     /**
+     * @author Nathan Romero
+     * @description Method to create day and add to database
+     * @method createDay
      * @param day
-     * @return
-     *
      */
+
     @Override
     public void createDay(Day day) {
         String query = "INSERT INTO " + DBTableValues.TABLE_DAY +
@@ -92,6 +109,14 @@ public class DayTable implements DayDAO {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to update day in database
+     * @method updateDay
+     * @param day
+     */
+
     @Override
     public void updateDay(Day day) {
        
@@ -107,8 +132,15 @@ public class DayTable implements DayDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to delete day from database
+     * @method deleteDay
+     * @param dayId
+     */
+
     @Override
     public void deleteDay(int dayId) {
         String query = "DELETE FROM " + DBTableValues.TABLE_DAY +
@@ -121,6 +153,13 @@ public class DayTable implements DayDAO {
         }
 
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to get recent day from database
+     * @method getRecentDay
+     * @return day
+     */
 
     @Override
     public Day getRecentDay() {
@@ -169,6 +208,14 @@ public class DayTable implements DayDAO {
         return null;
     }
 
+    /**
+     * @author Nathan Romero
+     * @description Method to get items from the day from database
+     * @method getDayItems
+     * @param dayId
+     * @return dayItems
+     */
+
     @Override
     public ArrayList<NutritionItem> getDayItems(int dayId) {
         // Get all meals, drinks and snacks for the day
@@ -186,6 +233,15 @@ public class DayTable implements DayDAO {
 
         return dayItems;
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to get meals from the day from database
+     * @method getDayMeals
+     * @param dayId
+     * @return meals
+     */
+
     @Override
     public ArrayList<NutritionItem> getDayMeals(int dayId) {
         // Get all meals for the day
@@ -211,6 +267,15 @@ public class DayTable implements DayDAO {
 
         return meals;
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to get drinks from the day from database
+     * @method getDayDrinks
+     * @param dayId
+     * @return drinks
+     */
+
     @Override
     public ArrayList<NutritionItem> getDayDrinks(int dayId) {
         // Get all drinks for the day
@@ -235,6 +300,15 @@ public class DayTable implements DayDAO {
 
         return drinks;
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to get snacks from the day from database
+     * @method getDaySnacks
+     * @param dayId
+     * @return snacks
+     */
+
     @Override
     public ArrayList<NutritionItem> getDaySnacks(int dayId) {
         // Get all snacks for the day
@@ -260,6 +334,14 @@ public class DayTable implements DayDAO {
         return snacks;
     }
 
+    /**
+     * @author Nathan Romero
+     * @description Method to get day by date from the database
+     * @method getDayByDate
+     * @param date
+     * @return day
+     */
+
     @Override
     public Day getDayByDate(Date date) {
         String query = "SELECT * FROM " + DBTableValues.TABLE_DAY +
@@ -278,6 +360,14 @@ public class DayTable implements DayDAO {
         }
         return null;
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to get days current calories from the database
+     * @method getDayCurrentCalories
+     * @param dayId
+     * @return calories
+     */
 
     @Override
     public int getDaysCurrentCalories(int dayId) {

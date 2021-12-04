@@ -5,44 +5,65 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description This class contains all the constants used in the program.
+ */
+
 public class Const {
 
     //Screen Size
+
     public static final int SCREEN_HEIGHT = 768;
     public static final int SCREEN_WIDTH = 1024;
 
-    //Fonts
-    public static final Font CREDIT_FONT = Font.font("Times New Roman",
-            FontWeight.NORMAL,
-            FontPosture.REGULAR,
-            36);
+    //CSS
 
-    public static final Font TITLE_FONT = Font.font("Times New Roman",
-            FontWeight.BOLD,
-            FontPosture.REGULAR,
-            36);
+    public static final String BACKGROUND_STYLE = "-fx-background-color: rgb(128, 128, 128);" +
+            "-fx-corner-radius: 0;" +
+            "-fx-insets: 0;";
 
-    public static final Font TEXT_FONT = Font.font("Times New Roman",
-            FontWeight.NORMAL,
-            FontPosture.REGULAR,
-            14);
+    public static final String CREDIT_BACKGROUND_STYLE = "-fx-background-color: rgb(0, 0, 0);" +
+            "-fx-corner-radius: 0;" +
+            "-fx-insets: 0;";
 
-    public static final Font BUTTON_FONT = Font.font("Times New Roman",
-            FontWeight.NORMAL,
-            FontPosture.REGULAR,
-            14);
+    public static final String CREDITS_TEXT_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 36;" +
+            "-fx-fill: rgb(255, 255, 255);" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-posture: regular;";
 
-    public static final Font SUCCESSFUL_ENTRY_FONT = Font.font("Times New Roman",
-            FontWeight.BOLD,
-            FontPosture.REGULAR,
-            24);
+    public static final String CHART_STYLE = "-fx-background-color: rgb(255, 255, 255);";
 
-    //Colors
-    public static final Color WHITE = Color.rgb(255, 255, 255);
-    public static final Color BLACK = Color.rgb(0, 0, 0);
-    public static final Color GRAY = Color.rgb(128, 128, 128);
-    public static final Color GREEN = Color.rgb(0, 128, 0);
+    public static final String DELETE_RECORD_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 36;" +
+            "-fx-fill: rgb(255, 0, 0);" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-posture: regular;";
 
-    //Alignment
-    public static final String CENTER_ALIGNMENT = "-fx-alignment: CENTER;";
+    public static final String PROGRESS_BAR_GREEN = "-fx-accent: green;";
+
+    public static final String PROGRESS_BAR_RED = "-fx-accent: rgb(255, 0, 0);";
+
+    public static final String SUCCESSFUL_ENTRY_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 24;" +
+            "-fx-fill: rgb(0, 128, 0);" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-posture: regular;";
+
+    public static final String CENTER_ALIGNMENT_STYLE = "-fx-alignment: CENTER;";
+
+    public static final String TEXT_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 14;" +
+            "-fx-fill: rgb(0, 0, 0);" +
+            "-fx-font-weight: normal;" +
+            "-fx-font-posture: regular;";
+
+    public static final String BUTTON_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 14;" +
+            "-fx-fill: rgb(0, 0, 0);" +
+            "-fx-font-weight: normal;" +
+            "-fx-font-posture: regular;";
 }

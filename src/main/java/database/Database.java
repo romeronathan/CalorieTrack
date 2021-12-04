@@ -3,6 +3,15 @@ package database;
 
 import java.sql.*;
 
+import static panes.accountSettingsPane.readSettings;
+
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public class Database {
 
     private static Database instance;
@@ -11,6 +20,7 @@ public class Database {
         if(connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
+                readSettings();
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DBConst.DB_NAME + "?useSSL=false",
                         DBConst.DB_USER, DBConst.DB_PASS);
                 System.out.println("Database successfully created!");

@@ -24,12 +24,19 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to view weeklyProgress of completed days
+ */
+
 public class weeklyProgressPane extends BorderPane {
 
     public TableView tableView;
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public weeklyProgressPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         ArrayList<Day> days = new DayTable().getAllDays();
 
@@ -41,15 +48,10 @@ public class weeklyProgressPane extends BorderPane {
                 System.out.println(cals.getCurrentCalories());
             }
 
-
-
-
-
-
         //Content
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setStyle(Const.BACKGROUND_STYLE);
 
         TableColumn<Day, String> column1 = new TableColumn<>("Day");
         column1.setCellValueFactory(e -> new SimpleStringProperty(formatter.format(e.getValue().getDate()) + ""));
@@ -65,15 +67,12 @@ public class weeklyProgressPane extends BorderPane {
 
         TableColumn<Day, String> column4 = new TableColumn("Goal Status");
         column4.setCellValueFactory(new PropertyValueFactory<>("dayImage"));
-        //TODO set checkmark image or xmark image for if goal is met or not
-//        column4.setCellValueFactory(e -> new SimpleStringProperty());
         column4.setPrefWidth(128);
+        column4.setStyle(Const.CENTER_ALIGNMENT_STYLE);
 
         TableColumn<Day, String> column5 = new TableColumn<>("View Day");
         column5.setCellValueFactory(e -> new SimpleStringProperty());
         column5.setPrefWidth(128);
-
-
 
         tableView.getColumns().addAll(column1, column2, column3, column4, column5);
         tableView.getItems().addAll(days);

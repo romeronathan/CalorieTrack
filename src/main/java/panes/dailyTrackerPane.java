@@ -22,6 +22,13 @@ import tables.NutritionTable;
 
 import java.util.ArrayList;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane that has a table and chart for the daily tracker
+ */
+
 public class dailyTrackerPane extends BorderPane {
 
     String itemName;
@@ -38,7 +45,7 @@ public class dailyTrackerPane extends BorderPane {
     public dailyTrackerPane() {
         NutritionTable nutritionTable = new NutritionTable();
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         for (NutritionItem item: items) {
             currentProgress += item.getCalories();
@@ -52,7 +59,7 @@ public class dailyTrackerPane extends BorderPane {
         addItem.setHgap(10);
 
         Text dailyGoalTracker = new Text("Daily Goal Tracker: " + currentProgress + "/" + dailyGoal + "\t\t");
-        dailyGoalTracker.setFont(Const.TEXT_FONT);
+        dailyGoalTracker.setStyle(Const.TEXT_STYLE);
         addItem.add(dailyGoalTracker, 1, 0);
 
         ProgressBar progressBar = new ProgressBar();
@@ -61,9 +68,9 @@ public class dailyTrackerPane extends BorderPane {
             progressPercentage = 1;
         }
         if(currentProgress > dailyGoal) {
-            progressBar.setStyle("-fx-accent: red;");
+            progressBar.setStyle(Const.PROGRESS_BAR_RED);
         } else {
-            progressBar.setStyle("-fx-accent: green;");
+            progressBar.setStyle(Const.PROGRESS_BAR_GREEN);
         }
         progressBar.setProgress(progressPercentage);
         progressBar.setPrefWidth(200);
@@ -71,40 +78,43 @@ public class dailyTrackerPane extends BorderPane {
         addItem.add(progressBar, 2, 0);
 
         deletedRecord = new Text("\tRecord Deleted!");
-        deletedRecord.setFont(Const.TITLE_FONT);
-        deletedRecord.setFill(Color.RED);
+        deletedRecord.setStyle(Const.DELETE_RECORD_STYLE);
         deletedRecord.setVisible(false);
         addItem.add(deletedRecord, 3, 0);
 
         this.setTop(addItem);
 
         tableView = new TableView();
-        tableView.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        tableView.setStyle(Const.BACKGROUND_STYLE);
 
         TableColumn<NutritionItem, String> column1 = new TableColumn<>("Name");
-        column1.setPrefWidth(150);
+        column1.setPrefWidth(118);
         column1.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getName()));
 
         TableColumn<NutritionItem, String> column2 = new TableColumn<>("Portion");
-        column2.setPrefWidth(150);
+        column2.setPrefWidth(118);
         column2.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getPortion() + ""));
 
         TableColumn<NutritionItem, String> column3 = new TableColumn<>("Calories");
-        column3.setPrefWidth(150);
+        column3.setPrefWidth(118);
         column3.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getCalories() + ""));
 
-        TableColumn column4 = new TableColumn<>("Delete Records");
-        column4.setPrefWidth(112);
-        column4.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
-        column4.setStyle(Const.CENTER_ALIGNMENT);
+        TableColumn<NutritionItem, String> column4 = new TableColumn<>("Type");
+        column4.setPrefWidth(118);
+        column4.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getType()));
 
-        TableColumn column5 = new TableColumn<>("Update Records");
-        column5.setPrefWidth(112);
-        column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
-        column5.setStyle(Const.CENTER_ALIGNMENT);
+        TableColumn column5 = new TableColumn<>("Delete Records");
+        column5.setPrefWidth(100);
+        column5.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("deleteButton"));
+        column5.setStyle(Const.CENTER_ALIGNMENT_STYLE);
+
+        TableColumn column6 = new TableColumn<>("Update Records");
+        column6.setPrefWidth(100);
+        column6.setCellValueFactory(new PropertyValueFactory<NutritionItem, String>("updateButton"));
+        column6.setStyle(Const.CENTER_ALIGNMENT_STYLE);
 
 
-        tableView.getColumns().addAll(column1, column2, column3, column4, column5);
+        tableView.getColumns().addAll(column1, column2, column3, column4, column5, column6);
 
         tableView.getItems().addAll(items);
         this.setCenter(tableView);
@@ -113,11 +123,17 @@ public class dailyTrackerPane extends BorderPane {
         breakdownChart.setTitle("Calorie Intake Breakdown");
         breakdownChart.setLabelsVisible(true);
         breakdownChart.setPrefWidth(350);
-        breakdownChart.setBackground(new Background(new BackgroundFill(Const.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        breakdownChart.setStyle(Const.CHART_STYLE);
         this.setRight(breakdownChart);
         generateChart();
 
     }
+
+    /**
+     * @author Nathan Romero
+     * @description Method to refresh the daily tracker table
+     * @method refreshTable
+     */
 
     public void refreshTable(){
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
@@ -130,6 +146,11 @@ public class dailyTrackerPane extends BorderPane {
 
     }
 
+    /**
+     * @author Devon Divinecz
+     * @description Method to generate the pie chart that breaks down calorie intake
+     * @method generateChart
+     */
     public void generateChart() {
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
 

@@ -15,11 +15,17 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to add a day to the database
+ */
 
 public class addDayPane extends BorderPane {
 
     public addDayPane() {
-        this.setBackground(new Background(new BackgroundFill(Const.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setStyle(Const.BACKGROUND_STYLE);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
@@ -48,7 +54,7 @@ public class addDayPane extends BorderPane {
         GridPane.setConstraints(calorieTF, 0, 3);
 
         Button submit = new Button("Submit");
-        submit.setFont(Const.BUTTON_FONT);
+        submit.setStyle(Const.BUTTON_STYLE);
         GridPane.setConstraints(submit, 1, 0);
         submit.setOnAction(e -> {
             if (dayTF.getText().isEmpty()) {
@@ -109,7 +115,7 @@ public class addDayPane extends BorderPane {
         });
 
         Button clear = new Button("Clear");
-        clear.setFont(Const.BUTTON_FONT);
+        clear.setStyle(Const.BUTTON_STYLE);
         GridPane.setConstraints(clear, 2, 0);
         clear.setOnAction(e -> {
             dayTF.clear();

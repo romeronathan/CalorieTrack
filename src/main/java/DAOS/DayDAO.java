@@ -6,6 +6,13 @@ import Models.NutritionItem;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public interface DayDAO {
     public void createDay(Day day);
     public void updateDay(Day day);
