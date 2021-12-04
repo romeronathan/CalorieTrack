@@ -1,5 +1,12 @@
 package Models;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public class Snack extends NutritionItem {
 
 

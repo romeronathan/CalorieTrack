@@ -4,6 +4,13 @@ import Models.NutritionItem;
 
 import java.util.ArrayList;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public interface NutritionDAO {
     public void createItem(String typeOfItem, NutritionItem item);
     public ArrayList<NutritionItem > getAllNutritionalItems(String typeOfItem);

@@ -12,6 +12,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description This class is used to create a table of nutrition items
+ */
+
 public class NutritionTable implements NutritionDAO {
     Database db = Database.getInstance();
 
@@ -20,10 +27,11 @@ public class NutritionTable implements NutritionDAO {
     // Generate java doc for createItem function
 
     /**
+     * @author Nathan Romero
+     * @description Method to create item in the database
+     * @method createItem
+     * @param typeOfItem
      * @param item
-     * @return
-     * @throws SQLException
-     * 
      */
 
     @Override
@@ -47,11 +55,15 @@ public class NutritionTable implements NutritionDAO {
             e.printStackTrace();
         }
     }
+
     /**
+     * @author Nathan Romero
+     * @description Method to get all Nutritional Items
+     * @method getAllNutritionalItems
      * @param typeOfItem
      * @return items
-     * 
      */
+
     @Override
     public ArrayList<NutritionItem> getAllNutritionalItems(String typeOfItem) {
         String query = "SELECT * FROM " + typeOfItem;
@@ -80,10 +92,13 @@ public class NutritionTable implements NutritionDAO {
         return items;
     }
 
-   /**
+    /**
+     * @author Nathan Romero
+     * @description Method to get item from the database
+     * @method getItem
+     * @param typeOfItem
      * @param id
      * @return item
-     * 
      */
     @Override
     public NutritionItem getItem(String typeOfItem, int id) {
@@ -111,12 +126,15 @@ public class NutritionTable implements NutritionDAO {
         return item;
         
     }
+
     /**
+     * @author Nathan Romero
+     * @description Method to update item in the database
+     * @method updateItem
+     * @param typeOfItem
      * @param item
-     * @return
-     * @throws SQLException
-     * 
      */
+
     @Override
     public void updateItem(String typeOfItem, NutritionItem item) {
 
@@ -135,11 +153,13 @@ public class NutritionTable implements NutritionDAO {
             e.printStackTrace();
         }
     }
+
     /**
+     * @author Nathan Romero
+     * @description Method to delete item from the database
+     * @method deleteItem
+     * @param typeOfItem
      * @param item
-     * @return
-     * @throws SQLException
-     * 
      */
 
     @Override

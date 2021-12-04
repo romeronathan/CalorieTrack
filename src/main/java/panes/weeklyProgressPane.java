@@ -24,6 +24,13 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to view weeklyProgress of completed days
+ */
+
 public class weeklyProgressPane extends BorderPane {
 
     public TableView tableView;
@@ -40,11 +47,6 @@ public class weeklyProgressPane extends BorderPane {
                 System.out.println(cals.getCalorieGoal());
                 System.out.println(cals.getCurrentCalories());
             }
-
-
-
-
-
 
         //Content
 
@@ -71,8 +73,6 @@ public class weeklyProgressPane extends BorderPane {
         TableColumn<Day, String> column5 = new TableColumn<>("View Day");
         column5.setCellValueFactory(e -> new SimpleStringProperty());
         column5.setPrefWidth(128);
-
-
 
         tableView.getColumns().addAll(column1, column2, column3, column4, column5);
         tableView.getItems().addAll(days);

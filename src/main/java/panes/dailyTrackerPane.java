@@ -22,6 +22,13 @@ import tables.NutritionTable;
 
 import java.util.ArrayList;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane that has a table and chart for the daily tracker
+ */
+
 public class dailyTrackerPane extends BorderPane {
 
     String itemName;
@@ -122,6 +129,12 @@ public class dailyTrackerPane extends BorderPane {
 
     }
 
+    /**
+     * @author Nathan Romero
+     * @description Method to refresh the daily tracker table
+     * @method refreshTable
+     */
+
     public void refreshTable(){
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
         System.out.println("MAde it here");
@@ -133,6 +146,11 @@ public class dailyTrackerPane extends BorderPane {
 
     }
 
+    /**
+     * @author Devon Divinecz
+     * @description Method to generate the pie chart that breaks down calorie intake
+     * @method generateChart
+     */
     public void generateChart() {
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
 

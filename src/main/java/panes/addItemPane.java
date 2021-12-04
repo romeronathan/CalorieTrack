@@ -21,6 +21,13 @@ import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to add nutrition Items to the database
+ */
+
 public class addItemPane extends BorderPane {
 
     String drinkName;

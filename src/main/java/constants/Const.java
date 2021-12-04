@@ -5,6 +5,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description This class contains all the constants used in the program.
+ */
+
 public class Const {
 
     //Screen Size

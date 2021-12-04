@@ -14,6 +14,12 @@ import tabs.dailyTrackerTab;
 import static launch.Main.mainStage;
 import static panes.dailyTrackerPane.deletedRecord;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
 
 public class NutritionItem {
 

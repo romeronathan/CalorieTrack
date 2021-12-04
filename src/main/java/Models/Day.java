@@ -12,6 +12,13 @@ import java.util.Date;
 
 import static launch.Main.mainStage;
 
+/**
+ * @author Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public class Day {
     private int id;
     private Date date;
@@ -29,6 +36,12 @@ public class Day {
         this.dayImage = dayImage;
     }
 
+    /**
+     * @author Nathan Romero
+     * @description Method to return an image in the weeklyProgress table
+     * @method homeMenu
+     * @return view
+     */
 
     public ImageView getImageView() {
         ImageView view = new ImageView();

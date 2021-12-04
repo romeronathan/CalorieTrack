@@ -15,6 +15,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to add a day to the database
+ */
 
 public class addDayPane extends BorderPane {
 

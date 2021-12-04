@@ -23,6 +23,13 @@ import java.util.Scanner;
 
 import static launch.Main.homeMenu;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to edit account settings
+ */
+
 public class accountSettingsPane extends BorderPane {
 
     public static File accountSettings = new File("Account/account_settings");
@@ -121,6 +128,12 @@ public class accountSettingsPane extends BorderPane {
         this.setCenter(grid);
     }
 
+    /**
+     * @author Devon Divinecz
+     * @description Method to read from account_settings.txt
+     * @method returnToWeeklyProgress
+     */
+
     public static void readSettings() {
         try {
             Scanner in = new Scanner(accountSettings);
@@ -134,6 +147,12 @@ public class accountSettingsPane extends BorderPane {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * @author Devon Divinecz
+     * @description Method to write to account_settings.txt
+     * @method returnToWeeklyProgress
+     */
 
     public static void updateSettings() {
         try {

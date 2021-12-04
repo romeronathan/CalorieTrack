@@ -12,6 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import launch.Main;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to view the selected day's nutrition items
+ */
+
 public class viewDayPane extends BorderPane {
 
     public TableView tableView;

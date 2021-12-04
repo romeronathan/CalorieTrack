@@ -2,6 +2,13 @@ package database;
 
 import static panes.accountSettingsPane.*;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description
+ */
+
 public class DBConst {
 //    public static final String DB_NAME = "nromerojava";
 //    public static final String DB_USER = "nromero";

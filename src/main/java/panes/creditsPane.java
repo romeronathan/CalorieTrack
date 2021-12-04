@@ -19,6 +19,13 @@ import javafx.util.Duration;
 import launch.Main;
 import scenes.*;
 
+/**
+ * @author Devon Divinecz
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane that provides credits of the application
+ */
+
 public class creditsPane extends BorderPane {
     public creditsPane() {
         this.setStyle(Const.CREDIT_BACKGROUND_STYLE);
@@ -91,6 +98,12 @@ public class creditsPane extends BorderPane {
         this.setCenter(creditsBox);
 
     }
+
+    /**
+     * @author Devon Divinecz
+     * @description Method that creates a scroll animation for the credits
+     * @method creditScroll
+     */
 
     public TranslateTransition creditScroll(Node node) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(1500), node);

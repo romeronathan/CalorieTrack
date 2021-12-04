@@ -17,6 +17,13 @@ import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
 
+/**
+ * @author Devon Divinecz & Nathan Romero
+ * @version 1.0
+ * @date 12/4/2021
+ * @description Pane to set the daily calorie goal for the user
+ */
+
 public class dailyGoalPane extends BorderPane {
 
    //TODO: Will equal to daily goal set in database
