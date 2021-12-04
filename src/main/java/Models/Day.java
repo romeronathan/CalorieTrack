@@ -1,16 +1,24 @@
 package Models;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+import launch.Main;
+import scenes.updateItemScene;
 import scenes.viewDayScene;
 import tables.DayTable;
+import tables.NutritionTable;
+import tabs.dailyTrackerTab;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import static launch.Main.mainStage;
+import static panes.dailyTrackerPane.deletedRecord;
 
 public class Day {
     private int id;
@@ -20,6 +28,8 @@ public class Day {
     private ArrayList<NutritionItem> nutritionItems;
     private Button viewDayButton;
     private ImageView dayImage;
+    private Button deleteButton;
+    private Button activeButton;
 
     public ImageView getDayImage() {
         return getImageView();
@@ -79,6 +89,19 @@ public class Day {
             mainStage.setScene(new viewDayScene());
         });
         this.dayImage = getImageView();
+
+        this.deleteButton = new Button("Delete");
+        this.deleteButton.setOnAction(e -> {
+            new DayTable().deleteDay(this.id);
+            dailyTrackerTab tab = dailyTrackerTab.getInstance();
+            tab.refresh();
+            deletedRecord.setVisible(true);
+            new Timeline(new KeyFrame(Duration.seconds(1), ae -> deletedRecord.setVisible(false))).play();
+        });
+        this.activeButton = new Button("Make Active");
+        this.activeButton.setOnAction(e -> {
+            Main.activeDay = this;
+        });
     }
 
     public Date getDate() {
