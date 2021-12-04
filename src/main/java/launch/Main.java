@@ -80,12 +80,12 @@ public class Main extends Application {
         tabPane = new TabPane();
 
         dailyTrackerTab dailyTrackerTab = tabs.dailyTrackerTab.getInstance();
-        weeklyProgressTab weeklyTrackerTab = tabs.weeklyProgressTab.getInstance();
         addItemTab addItemTab = tabs.addItemTab.getInstance();
         addDayTab addDayTab = tabs.addDayTab.getInstance();
         dailyGoalTab dailyGoalTab = tabs.dailyGoalTab.getInstance();
+        historyTab historyTab = tabs.historyTab.getInstance();
 
-        tabPane.getTabs().addAll(dailyTrackerTab, weeklyTrackerTab, addItemTab, addDayTab, dailyGoalTab);
+        tabPane.getTabs().addAll(dailyTrackerTab, addItemTab, addDayTab, dailyGoalTab, historyTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         root.setCenter(tabPane);

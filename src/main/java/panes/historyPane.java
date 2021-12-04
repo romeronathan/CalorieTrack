@@ -1,27 +1,16 @@
 package panes;
 
 import Models.Day;
-import Models.NutritionItem;
 import constants.Const;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import launch.Main;
-import scenes.*;
 import tables.DayTable;
 
 
-import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -32,12 +21,12 @@ import java.util.ArrayList;
  * @description Pane to view weeklyProgress of completed days
  */
 
-public class weeklyProgressPane extends BorderPane {
+public class historyPane extends BorderPane {
 
     public TableView tableView;
     public static Text weeklyDeletedRecord;
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    public weeklyProgressPane() {
+    public historyPane() {
         this.setStyle(Const.BACKGROUND_STYLE);
 
         ArrayList<Day> days = new DayTable().getAllDays();

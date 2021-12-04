@@ -1,25 +1,18 @@
 package Models;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import launch.Main;
-import scenes.updateItemScene;
 import scenes.viewDayScene;
 import tables.DayTable;
-import tables.NutritionTable;
-import tabs.dailyTrackerTab;
-import tabs.weeklyProgressTab;
+import tabs.historyTab;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 
 import static launch.Main.mainStage;
-import static panes.dailyTrackerPane.deletedRecord;
 
 /**
  * @author Nathan Romero
@@ -109,7 +102,7 @@ public class Day {
         this.deleteButton = new Button("Delete");
         this.deleteButton.setOnAction(e -> {
             new DayTable().deleteDay(this.id);
-            weeklyProgressTab tab = weeklyProgressTab.getInstance();
+            historyTab tab = historyTab.getInstance();
             tab.refresh();
         });
         this.activeButton = new Button("Make Active");
