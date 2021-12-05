@@ -101,9 +101,14 @@ public class Day {
 
         this.deleteButton = new Button("Delete");
         this.deleteButton.setOnAction(e -> {
-            new DayTable().deleteDay(this.id);
-            historyTab tab = historyTab.getInstance();
-            tab.refresh();
+            if(this.id != Main.activeDay.getId()) {
+                new DayTable().deleteDay(this.id);
+                historyTab tab = historyTab.getInstance();
+                tab.refresh();
+            } else {
+
+            }
+
         });
         this.activeButton = new Button("Make Active");
         this.activeButton.setOnAction(e -> {
