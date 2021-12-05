@@ -14,6 +14,8 @@ import javafx.util.Duration;
 import launch.Main;
 import scenes.*;
 import tables.DayTable;
+import tabs.addDayTab;
+import tabs.historyTab;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -106,7 +108,8 @@ public class addDayPane extends BorderPane {
                        else {
                            Day newDay = new Day(date, calorieGoal);
                            new DayTable().createDay(newDay);
-
+                           historyTab tab = historyTab.getInstance();
+                           tab.refresh();
                           Main.updateDate(newDay);
                        }
                    }

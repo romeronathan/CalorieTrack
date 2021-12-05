@@ -2,6 +2,7 @@ package tabs;
 
 import javafx.scene.control.Tab;
 import panes.addDayPane;
+import panes.dailyTrackerPane;
 
 /**
  * @author Devon Divinecz
@@ -26,7 +27,9 @@ public class addDayTab extends Tab {
      * @method getInstance
      * @return tab
      */
-
+    public void refresh(){
+        this.setContent(new addDayPane());
+    }
     public static addDayTab getInstance() {
         if (tab == null) {
             tab = new addDayTab();
