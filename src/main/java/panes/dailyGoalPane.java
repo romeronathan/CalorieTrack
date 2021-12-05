@@ -16,6 +16,7 @@ import scenes.*;
 import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+import tabs.historyTab;
 
 /**
  * @author Devon Divinecz & Nathan Romero
@@ -65,6 +66,10 @@ public class dailyGoalPane extends BorderPane {
                 try {
                     new DayTable().updateDay(day);
                     Main.activeDay = day;
+                    historyTab hisTab = historyTab.getInstance();
+                    hisTab.refresh();
+                    tab.refresh();
+
                     currentDailyGoal.setText("Current Daily Goal: " + dailyGoalInt);
                 } catch (Exception exception) {
                     System.out.println(exception);

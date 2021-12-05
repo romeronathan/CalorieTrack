@@ -20,6 +20,7 @@ import scenes.*;
 import tables.DayTable;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+import tabs.historyTab;
 
 /**
  * @author Devon Divinecz & Nathan Romero
@@ -104,6 +105,8 @@ public class addItemPane extends BorderPane {
                 new NutritionTable().createItem(type,item);
 
                 dailyTrackerTab tab = dailyTrackerTab.getInstance();
+                historyTab historyTab = tabs.historyTab.getInstance();
+                historyTab.refresh();
                 tab.refresh();
 
                 successfulEntry.setVisible(true);
