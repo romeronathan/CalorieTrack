@@ -50,7 +50,7 @@ public class Day {
 
     public ImageView getImageView() {
         ImageView view = new ImageView();
-        if(this.calorieGoal > this.currentCalories) {
+        if(this.currentCalories <= this.calorieGoal) {
             Image img = new Image("file:src/main/java/images/checkmark.png");
             view.setImage(img);
         } else {

@@ -38,6 +38,7 @@ public class viewDayPane extends BorderPane {
             Main.returnToWeeklyProgress();
         });
         backButton.setAlignment(Pos.CENTER_LEFT);
+        backButton.setStyle(Const.BUTTON_STYLE);
         hBox.getChildren().add(backButton);
         this.setTop(hBox);
 
