@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import scenes.updateItemScene;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+import tabs.historyTab;
 
 import static launch.Main.mainStage;
 import static panes.dailyTrackerPane.deletedRecord;
@@ -54,9 +55,10 @@ public class NutritionItem {
         this.deleteButton.setOnAction(e -> {
             new NutritionTable().deleteItem(this.type, this);
             dailyTrackerTab tab = dailyTrackerTab.getInstance();
-            tab.refresh();
             deletedRecord.setVisible(true);
             new Timeline(new KeyFrame(Duration.seconds(1), ae -> deletedRecord.setVisible(false))).play();
+            tab.refresh();
+            historyTab.getInstance().refresh();
         });
         this.updateButton = new Button("Update");
         this.updateButton.setOnAction(e -> {

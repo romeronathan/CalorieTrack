@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import launch.Main;
 import tables.NutritionTable;
 import tabs.dailyTrackerTab;
+import tabs.historyTab;
 
 /**
  * @author Devon Divinecz & Nathan Romero
@@ -69,6 +70,7 @@ public class updateItemPane extends BorderPane {
 
                 dailyTrackerTab tab = dailyTrackerTab.getInstance();
                 tab.refresh();
+                historyTab.getInstance().refresh();
             }
            Main.homeMenu();
         });
