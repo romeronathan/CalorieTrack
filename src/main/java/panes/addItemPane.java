@@ -56,8 +56,6 @@ public class addItemPane extends BorderPane {
         final TextField drinkNameTF = new TextField();
         drinkNameTF.setPromptText("Name");
         drinkNameTF.setStyle(Const.TEXT_STYLE);
-        drinkNameTF.setPrefColumnCount(10);
-        drinkNameTF.getText();
         GridPane.setConstraints(drinkNameTF, 0, 1);
         grid.getChildren().add(drinkNameTF);
 
@@ -68,7 +66,6 @@ public class addItemPane extends BorderPane {
         grid.getChildren().add(drinkCaloriesTF);
 
         final TextField drinkServingTF = new TextField();
-        drinkServingTF.setPrefColumnCount(15);
         drinkServingTF.setPromptText("Serving");
         drinkServingTF.setStyle(Const.TEXT_STYLE);
         GridPane.setConstraints(drinkServingTF, 0, 3);
@@ -78,6 +75,7 @@ public class addItemPane extends BorderPane {
         itemType.getItems().addAll("meal", "drink", "snack");
         GridPane.setConstraints(itemType, 1, 1);
         itemType.setValue("meal");
+        itemType.setStyle(Const.COMBO_BOX_STYLE);
         grid.getChildren().add(itemType);
 
         Button submitDrink = new Button("Submit");

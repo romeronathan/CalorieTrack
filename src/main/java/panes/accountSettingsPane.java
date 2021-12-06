@@ -79,7 +79,7 @@ public class accountSettingsPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
-        Text failedEntry = new Text("Form Incorrectly Filled!");
+        Text failedEntry = new Text("Settings Incorrectly Filled!");
         failedEntry.setStyle(Const.FAILED_ENTRY_STYLE);
         failedEntry.setVisible(false);
         GridPane.setConstraints(failedEntry, 0, 0);

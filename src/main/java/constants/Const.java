@@ -67,9 +67,16 @@ public class Const {
             "-fx-font-weight: normal;" +
             "-fx-font-posture: regular;";
 
-    public static final String BUTTON_STYLE = "-fx-font-family: \"Times New Roman\"; " +
-            "-fx-font-size: 14;" +
-            "-fx-fill: rgb(0, 0, 0);" +
-            "-fx-font-weight: normal;" +
-            "-fx-font-posture: regular;";
+    public static final String BUTTON_STYLE = "-fx-background-color: #3498db;\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-color: #ffffff;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px 10px 5px 10px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String COMBO_BOX_STYLE = "-fx-background-color: #3498db;\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-color: #ffffff;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-text-decoration: none;";
 }
