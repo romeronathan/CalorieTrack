@@ -4,6 +4,8 @@ import Models.Day;
 import constants.Const;
 import database.Database;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -32,6 +34,12 @@ public class Main extends Application {
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     public static BorderPane root;
     public static Scene scene;
+
+    public static dailyTrackerTab dailyTrackerTab;
+    public static addItemTab addItemTab;
+    public static addDayTab addDayTab;
+    public static dailyGoalTab dailyGoalTab;
+    public static historyTab historyTab;
 
     public static void main(String[] args) {
         launch();
@@ -87,13 +95,14 @@ public class Main extends Application {
 
         tabPane.getTabs().addAll(dailyTrackerTab, addItemTab, addDayTab, dailyGoalTab, historyTab);
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        currentTab();
 
         root.setCenter(tabPane);
 
         mainStage = stage;
         stage.setTitle("Calorie Tracker");
         scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
-        
+
         stage.setScene(scene);
         stage.show();
 
@@ -145,5 +154,53 @@ public class Main extends Application {
         tabPane.getSelectionModel().select(4);
     }
 
+    /**
+     * @author Devon Divinecz
+     * @description Method to change selected tab style
+     * @method currentTab
+     */
+    public static void currentTab() {
+        tabs.dailyTrackerTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+        tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue) {
+                if (newValue.equals(tabs.dailyTrackerTab.getInstance())) {
+                    tabs.dailyTrackerTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+                    tabs.addItemTab.getInstance().setStyle("");
+                    tabs.addDayTab.getInstance().setStyle("");
+                    tabs.dailyGoalTab.getInstance().setStyle("");
+                    tabs.historyTab.getInstance().setStyle("");
+                }
+                else if (newValue.equals(tabs.addItemTab.getInstance())) {
+                    tabs.addItemTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+                    tabs.dailyTrackerTab.getInstance().setStyle("");
+                    tabs.addDayTab.getInstance().setStyle("");
+                    tabs.dailyGoalTab.getInstance().setStyle("");
+                    tabs.historyTab.getInstance().setStyle("");
+                }
+                else if (newValue.equals(tabs.addDayTab.getInstance())) {
+                    tabs.addDayTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+                    tabs.dailyTrackerTab.getInstance().setStyle("");
+                    tabs.addItemTab.getInstance().setStyle("");
+                    tabs.dailyGoalTab.getInstance().setStyle("");
+                    tabs.historyTab.getInstance().setStyle("");
+                }
+                else if (newValue.equals(tabs.dailyGoalTab.getInstance())) {
+                    tabs.dailyGoalTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+                    tabs.dailyTrackerTab.getInstance().setStyle("");
+                    tabs.addItemTab.getInstance().setStyle("");
+                    tabs.addDayTab.getInstance().setStyle("");
+                    tabs.historyTab.getInstance().setStyle("");
+                }
+                else if (newValue.equals(tabs.historyTab.getInstance())) {
+                    tabs.historyTab.getInstance().setStyle(Const.CURRENT_TAB_STYLE);
+                    tabs.dailyTrackerTab.getInstance().setStyle("");
+                    tabs.addItemTab.getInstance().setStyle("");
+                    tabs.addDayTab.getInstance().setStyle("");
+                    tabs.dailyGoalTab.getInstance().setStyle("");
+                }
+            }
+        });
+    }
 
 }

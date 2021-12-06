@@ -69,7 +69,6 @@ public class Const {
 
     public static final String BUTTON_STYLE = "-fx-background-color: rgb(52, 152, 219);\n" +
             "-fx-font-family: Arial;\n" +
-            "-fx-color: #ffffff;\n" +
             "-fx-font-size: 14px;\n" +
             "-fx-padding: 5px 10px 5px 10px;\n" +
             "-fx-text-decoration: none;";
@@ -102,5 +101,11 @@ public class Const {
             "-fx-font-family: Arial;\n" +
             "-fx-color: #ffffff;\n" +
             "-fx-font-size: 14px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String CURRENT_TAB_STYLE = "-fx-background-color: rgb(52, 152, 219);\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px;\n" +
             "-fx-text-decoration: none;";
 }
