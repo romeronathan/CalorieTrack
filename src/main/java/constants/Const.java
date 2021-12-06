@@ -35,6 +35,12 @@ public class Const {
             "-fx-font-weight: bold;" +
             "-fx-font-posture: regular;";
 
+    public static final String CREDITS_TITLE_STYLE = "-fx-font-family: \"Times New Roman\"; " +
+            "-fx-font-size: 72;" +
+            "-fx-fill: rgb(255, 255, 255);" +
+            "-fx-font-weight: bold;" +
+            "-fx-font-posture: regular;";
+
     public static final String CHART_STYLE = "-fx-background-color: rgb(255, 255, 255);";
 
     public static final String DELETE_RECORD_STYLE = "-fx-font-family: \"Times New Roman\"; " +

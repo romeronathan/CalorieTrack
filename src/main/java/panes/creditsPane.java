@@ -64,7 +64,7 @@ public class creditsPane extends BorderPane {
         Text projectTitle = new Text();
         projectTitle.setText("Calorie Track");
         projectTitle.setTextAlignment(TextAlignment.CENTER);
-        projectTitle.setStyle(Const.CREDITS_TEXT_STYLE);
+        projectTitle.setStyle(Const.CREDITS_TITLE_STYLE);
 
         Text creators = new Text();
         creators.setText("Creators: Devon Divinecz & Nathan Romero");

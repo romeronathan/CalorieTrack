@@ -21,6 +21,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
+import static launch.Main.homeMenu;
+
 /**
  * @author Devon Divinecz & Nathan Romero
  * @version 1.0
@@ -106,7 +108,7 @@ public class addDayPane extends BorderPane {
                            new DayTable().createDay(newDay);
                            historyTab tab = historyTab.getInstance();
                            tab.refresh();
-                          Main.updateDate(newDay);
+//                          Main.updateDate(newDay);
                        }
                    }
                }
