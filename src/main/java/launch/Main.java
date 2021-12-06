@@ -113,8 +113,14 @@ public class Main extends Application {
         menu.getMenus().remove(1);
         menu.getMenus().add(activeDayTitle);
         dailyTrackerTab tab = dailyTrackerTab.getInstance();
-        tab.refresh();
+        addDayTab dayTab = addDayTab.getInstance();
+        addItemTab itemTab = addItemTab.getInstance();
         dailyGoalTab goalTab = dailyGoalTab.getInstance();
+
+
+        tab.refresh();
+        dayTab.refresh();
+        itemTab.refresh();
         goalTab.refresh();
     }
 

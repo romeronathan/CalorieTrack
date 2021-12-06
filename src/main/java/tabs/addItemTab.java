@@ -2,6 +2,7 @@ package tabs;
 
 import javafx.scene.control.Tab;
 import panes.addItemPane;
+import panes.dailyGoalPane;
 
 /**
  * @author Devon Divinecz
@@ -19,7 +20,9 @@ public class addItemTab extends Tab {
         this.setClosable(false);
         this.setContent(new addItemPane());
     }
-
+    public void refresh(){
+        this.setContent(new addItemPane());
+    }
     /**
      * @author Devon Divinecz
      * @description Method to add tab to the tabPane

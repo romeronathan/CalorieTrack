@@ -34,10 +34,11 @@ public class addItemPane extends BorderPane {
     String drinkName;
     int drinkCalories;
     int drinkServing;
-    Day day = Main.activeDay;
+    Day day;
 
     public addItemPane() {
         this.setStyle(Const.BACKGROUND_STYLE);
+         day = Main.activeDay;
 
         //Content
 
