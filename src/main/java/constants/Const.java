@@ -67,14 +67,38 @@ public class Const {
             "-fx-font-weight: normal;" +
             "-fx-font-posture: regular;";
 
-    public static final String BUTTON_STYLE = "-fx-background-color: #3498db;\n" +
+    public static final String BUTTON_STYLE = "-fx-background-color: rgb(52, 152, 219);\n" +
             "-fx-font-family: Arial;\n" +
             "-fx-color: #ffffff;\n" +
             "-fx-font-size: 14px;\n" +
             "-fx-padding: 5px 10px 5px 10px;\n" +
             "-fx-text-decoration: none;";
 
-    public static final String COMBO_BOX_STYLE = "-fx-background-color: #3498db;\n" +
+    public static final String DELETE_BUTTON_STYLE = "-fx-background-color: rgba(193, 16, 16, 0.6);\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px 10px 5px 10px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String VIEW_DAY_BUTTON_STYLE = "-fx-background-color: rgba(6, 76, 185, 0.6);\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px 10px 5px 10px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String UPDATE_BUTTON_STYLE = "-fx-background-color: rgba(6, 76, 185, 0.7);\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px 10px 5px 10px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String ACTIVE_BUTTON_STYLE = "-fx-background-color: rgba(35, 171, 29, 0.7);\n" +
+            "-fx-font-family: Arial;\n" +
+            "-fx-font-size: 14px;\n" +
+            "-fx-padding: 5px 10px 5px 10px;\n" +
+            "-fx-text-decoration: none;";
+
+    public static final String COMBO_BOX_STYLE = "-fx-background-color: rgb(52, 152, 219);\n" +
             "-fx-font-family: Arial;\n" +
             "-fx-color: #ffffff;\n" +
             "-fx-font-size: 14px;\n" +

@@ -1,6 +1,7 @@
 package Models;
 
 
+import constants.Const;
 import database.DBConst;
 import enums.NutritionEnum;
 import javafx.animation.KeyFrame;
@@ -60,10 +61,12 @@ public class NutritionItem {
             tab.refresh();
             historyTab.getInstance().refresh();
         });
+        this.deleteButton.setStyle(Const.DELETE_BUTTON_STYLE);
         this.updateButton = new Button("Update");
         this.updateButton.setOnAction(e -> {
             mainStage.setScene(new updateItemScene(this));
         });
+        this.updateButton.setStyle(Const.UPDATE_BUTTON_STYLE);
     }
 
 

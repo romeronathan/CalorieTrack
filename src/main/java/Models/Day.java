@@ -1,5 +1,6 @@
 package Models;
 
+import constants.Const;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -94,10 +95,12 @@ public class Day {
         this.calorieGoal = calorieGoal;
         this.viewDayButton = new Button("View Day");
         this.currentCalories = new DayTable().getDaysCurrentCalories(this.getId());
+        this.dayImage = getImageView();
+
         viewDayButton.setOnAction(e -> {
             mainStage.setScene(new viewDayScene(this));
         });
-        this.dayImage = getImageView();
+        this.viewDayButton.setStyle(Const.VIEW_DAY_BUTTON_STYLE);
 
         this.deleteButton = new Button("Delete");
         this.deleteButton.setOnAction(e -> {
@@ -110,10 +113,13 @@ public class Day {
             }
 
         });
+        this.deleteButton.setStyle(Const.DELETE_BUTTON_STYLE);
+
         this.activeButton = new Button("Make Active");
         this.activeButton.setOnAction(e -> {
            Main.updateDate(this);
         });
+        this.activeButton.setStyle(Const.ACTIVE_BUTTON_STYLE);
     }
 
     public Button getDeleteButton() { return deleteButton; }
