@@ -38,39 +38,35 @@ public class addDayPane extends BorderPane {
         grid.setVgap(5);
         grid.setHgap(5);
 
-        Text successfulEntry = new Text("Successfully added day!");
-        successfulEntry.setStyle(Const.SUCCESSFUL_ENTRY_STYLE);
-        successfulEntry.setVisible(false);
-        GridPane.setConstraints(successfulEntry, 0, 0);
-        grid.getChildren().add(successfulEntry);
-
         final TextField yearTF = new TextField();
         yearTF.setPromptText("Year");
         yearTF.setPrefColumnCount(10);
-        GridPane.setConstraints(yearTF, 0, 1);
+        GridPane.setConstraints(yearTF, 0, 0);
+        grid.getChildren().add(yearTF);
 
         final TextField monthTF = new TextField();
         monthTF.setPromptText("Month");
         monthTF.setPrefColumnCount(15);
-        GridPane.setConstraints(monthTF, 0, 2);
+        GridPane.setConstraints(monthTF, 0, 1);
+        grid.getChildren().add(monthTF);
 
 
         final TextField dayTF = new TextField();
         dayTF.setPromptText("Day");
         dayTF.setPrefColumnCount(20);
-        GridPane.setConstraints(dayTF, 0, 3);
+        GridPane.setConstraints(dayTF, 0, 2);
+        grid.getChildren().add(dayTF);
 
         final TextField calorieTF = new TextField();
         calorieTF.setPromptText("Calories");
         calorieTF.setPrefColumnCount(25);
-        GridPane.setConstraints(calorieTF, 0, 4);
+        GridPane.setConstraints(calorieTF, 0, 3);
+        grid.getChildren().add(calorieTF);
 
         Button submit = new Button("Submit");
         submit.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(submit, 1, 1);
+        GridPane.setConstraints(submit, 1, 0);
         submit.setOnAction(e -> {
-            successfulEntry.setVisible(true);
-            new Timeline(new KeyFrame(Duration.seconds(1), ae -> successfulEntry.setVisible(false))).play();
             if (dayTF.getText().isEmpty()) {
                 dayTF.setPromptText("Please enter a day");
             } else {
@@ -123,18 +119,19 @@ public class addDayPane extends BorderPane {
             yearTF.clear();
             calorieTF.clear();
         });
+        grid.getChildren().add(submit);
 
         Button clear = new Button("Clear");
         clear.setStyle(Const.BUTTON_STYLE);
-        GridPane.setConstraints(clear, 1, 2);
+        GridPane.setConstraints(clear, 1, 1);
         clear.setOnAction(e -> {
             dayTF.clear();
             monthTF.clear();
             yearTF.clear();
             calorieTF.clear();
         });
+        grid.getChildren().add(clear);
 
-        grid.getChildren().addAll(yearTF, monthTF, dayTF, calorieTF, submit, clear);
         grid.setAlignment(Pos.CENTER);
 
         this.setCenter(grid);
