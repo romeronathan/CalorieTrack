@@ -125,12 +125,16 @@ public class Main extends Application {
         addDayTab dayTab = addDayTab.getInstance();
         addItemTab itemTab = addItemTab.getInstance();
         dailyGoalTab goalTab = dailyGoalTab.getInstance();
+        historyTab historyTab = tabs.historyTab.getInstance();
+
+
 
 
         tab.refresh();
         dayTab.refresh();
         itemTab.refresh();
         goalTab.refresh();
+        historyTab.refresh();
     }
 
     /**

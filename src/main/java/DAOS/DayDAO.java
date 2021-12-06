@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 
 public interface DayDAO {
-    public void createDay(Day day);
+    public int createDay(Day day);
     public void updateDay(Day day);
     public void deleteDay(int dayId);
     public Day getRecentDay();

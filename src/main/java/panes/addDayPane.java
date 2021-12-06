@@ -105,10 +105,10 @@ public class addDayPane extends BorderPane {
                        }
                        else {
                            Day newDay = new Day(date, calorieGoal);
-                           new DayTable().createDay(newDay);
-                           historyTab tab = historyTab.getInstance();
-                           tab.refresh();
-//                          Main.updateDate(newDay);
+                           int dayId = new DayTable().createDay(newDay);
+                           newDay.setId(dayId);
+
+                           Main.updateDate(newDay);
                        }
                    }
                }

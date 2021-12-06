@@ -15,7 +15,10 @@ public class dailyTrackerTab extends Tab {
     private static dailyTrackerTab tab;
 
     public void refresh(){
-        this.setContent(new dailyTrackerPane());
+        dailyTrackerPane pane = new dailyTrackerPane();
+        pane.refreshTable();
+
+        this.setContent(pane);
     }
     public dailyTrackerTab() {
         this.setText("Daily Tracker");

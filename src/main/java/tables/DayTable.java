@@ -6,12 +6,9 @@ import database.DBTableValues;
 import database.Database;
 
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Calendar;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -96,18 +93,24 @@ public class DayTable implements DayDAO {
      */
 
     @Override
-    public void createDay(Day day) {
+    public int createDay(Day day) {
         String query = "INSERT INTO " + DBTableValues.TABLE_DAY +
                 "(" + DBTableValues.DAY_COLUMN_DATE + ", " +
                 DBTableValues.DAY_COLUMN_CALORIE_GOAL  + ") VALUES ('" +
                 day.getDate() + "','" + day.getCalorieGoal()  +
                 "')";
         try {
-            db.getConnection().createStatement().execute(query);
+            PreparedStatement statement = db.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.execute();
+            ResultSet rs = statement.getGeneratedKeys();
             System.out.println("Inserted Record");
+            if(rs.next()) {
+                return rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     /**

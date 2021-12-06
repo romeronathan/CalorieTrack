@@ -32,19 +32,20 @@ import java.util.ArrayList;
 public class dailyTrackerPane extends BorderPane {
 
     String itemName;
-    Day day = Main.activeDay;
     double currentProgress;
 //    double currentProgress = 250;
-    double dailyGoal = day.getCalorieGoal();
+    double  dailyGoal;
     double progressPercentage;
     public static Text deletedRecord;
     public TableView tableView;
     PieChart breakdownChart;
+    ArrayList<NutritionItem> items = new ArrayList<>();
     ObservableList<PieChart.Data> pieChartData;
 
     public dailyTrackerPane() {
         NutritionTable nutritionTable = new NutritionTable();
-        ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
+        dailyGoal = Main.activeDay.getCalorieGoal();
+        items = new DayTable().getDayItems(Main.activeDay.getId());
         this.setStyle(Const.BACKGROUND_STYLE);
 
         for (NutritionItem item: items) {
@@ -136,6 +137,7 @@ public class dailyTrackerPane extends BorderPane {
      */
 
     public void refreshTable(){
+        Day day = Main.activeDay;
         ArrayList<NutritionItem> items = new DayTable().getDayItems(Main.activeDay.getId());
         System.out.println("MAde it here");
 
