@@ -21,7 +21,7 @@ public class Database {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 readSettings();
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DBConst.DB_NAME + "?useSSL=false",
+                connection = DriverManager.getConnection(DBConst.DB_SERVER + DBConst.DB_NAME + "?useSSL=false",
                         DBConst.DB_USER, DBConst.DB_PASS);
                 System.out.println("Database successfully created!");
 
