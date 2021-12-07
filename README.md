@@ -14,6 +14,7 @@
 
 * Pull the project.
 * Add the required JavaFX libraries (Follow guide from prerequisite section)
+* Change the account_settings file in the Account folder to your own information. 
 * Run the app and start tracking your calories.
 
 ## Videos of Application
