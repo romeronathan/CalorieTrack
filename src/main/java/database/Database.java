@@ -60,13 +60,22 @@ public class Database {
         ResultSet resultSet = md.getTables("nromerojava",
                 null, tableName, null);
         //If the table is present
-        if(resultSet.next()){
-            System.out.println(tableName + " table already exists!");
+        try {
+            if(resultSet.next()){
+                System.out.println(tableName + " table already exists!");
+            }
+            else{
+                createTable = connection.createStatement();
+                createTable.execute(tableQuery);
+                System.out.println("The " + tableName + " table has been inserted");
+            }
+        } catch (SQLException e) {
+            if(e.getErrorCode() == 1050) {
+                System.out.println("The " + tableName + " table already exists!");
+            } else {
+                System.out.println(e.getErrorCode());
+            }
         }
-        else{
-            createTable = connection.createStatement();
-            createTable.execute(tableQuery);
-            System.out.println("The " + tableName + " table has been inserted");
-        }
+
     }
 }
