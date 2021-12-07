@@ -14,7 +14,11 @@
 
 * Pull the project.
 * Add the required JavaFX libraries (Follow guide from prerequisite section)
-* Change the account_settings file in the Account folder to your own information. 
+* Change the account_settings.txt file in the Account folder to your own information:
+  * First line will be Database username.
+  * Second line will be Database password.
+  * Third line will be server location. May look like: jdbc:mysql://localhost:3306/
+  * Fourth line will be your Database name.
 * Run the app and start tracking your calories.
 
 ## Videos of Application
