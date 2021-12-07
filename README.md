@@ -16,7 +16,12 @@
 * Add the required JavaFX libraries (Follow guide from prerequisite section)
 * Run the app and start tracking your calories.
 
-## Author
+## Videos of Application
+
+![Alt Text](https://media4.giphy.com/media/FEvEJ91QfxDEkj4hGY/giphy.gif?cid=790b7611b3f7cb2a525d2adf566d4ac91adab252584f216f&rid=giphy.gif&ct=g)
+![Alt Text](https://media3.giphy.com/media/HzV41ygkLQjqTVoBS5/giphy.gif?cid=790b7611c9faca8862484786083f285a09966eca478da967&rid=giphy.gif&ct=g)
+![Alt Text](https://media4.giphy.com/media/zVd6dCkMfQveZon4Fs/giphy.gif?cid=790b761167c0e0d59a2b5065e010ca92d26b54a12323d304&rid=giphy.gif&ct=g)
+## Authors
 
 Nathan Romero & Devon Divinecz
 
